@@ -1,13 +1,48 @@
-```css
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     text-align: center;
-    margin-top: 20%;
 }
 
-h1 {
-    color: #333;
-    font-size: 24px;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
-```
+
+.title {
+    font-size: 36px;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-label {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.search-bar {
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.results-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
