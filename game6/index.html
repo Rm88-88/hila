@@ -78,7 +78,30 @@
             extreme: 500
         };
 
+        let touchStartX = 0;
+        let touchEndX = 0;
+
         document.addEventListener('keydown', moveSpaceship);
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchend', handleTouchEnd, false);
+
+        function handleTouchStart(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleGesture();
+        }
+
+        function handleGesture() {
+            if (touchEndX < touchStartX) {
+                moveSpaceship({ key: 'ArrowLeft' });
+            }
+            if (touchEndX > touchStartX) {
+                moveSpaceship({ key: 'ArrowRight' });
+            }
+        }
 
         function startGame(level) {
             obstacleSpeed = difficultyLevels[level];
@@ -96,6 +119,8 @@
         function endGame() {
             clearInterval(gameInterval);
             document.removeEventListener('keydown', moveSpaceship);
+            document.removeEventListener('touchstart', handleTouchStart, false);
+            document.removeEventListener('touchend', handleTouchEnd, false);
             messageDisplay.style.display = 'block';
             messageDisplay.textContent = `המשחק נגמר! הניקוד שלך: ${score}`;
         }
