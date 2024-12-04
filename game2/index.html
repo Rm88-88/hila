@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבוך הזמן</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            background-color: #282c34;
+            color: #ffffff;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        #game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        #maze {
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            grid-template-rows: repeat(10, 40px);
+            gap: 2px;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            background-color: #555;
+            border: 1px solid #444;
+        }
+        .wall {
+            background-color: #222;
+        }
+        .player {
+            background-color: #00ff00;
+        }
+        .exit {
+            background-color: #ff0000;
+        }
+        #info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>מבוך הזמן</h1>
+    <div id="game-container">
+        <div id="maze"></div>
+    </div>
+    <div id="info">
+        <p>זמן שנותר: <span id="timer">30</span> שניות</p>
+        <p>השתמש בחיצים כדי לנווט למטרה האדומה!</p>
+    </div>
+    <script>
+        const mazeContainer = document.getElementById('maze');
+        const timerElement = document.getElementById('timer');
+        const mazeSize = 10;
+        const playerPosition = { x: 0, y: 0 };
+        const exitPosition = { x: 9, y: 9 };
+        const maze = [
+            [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 1, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
+            [0, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+            [0, 1, 0, 0, 0, 1, 0, 0, 1, 0],
+            [0, 1, 1, 1, 1, 1, 0, 1, 1, 0],
+            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+            [1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
+            [0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+            [0, 1, 1, 1, 0, 0, 0, 1, 1, 0]
+        ];
+        let timeRemaining = 30;
+        let gameInterval;
+
+        function createMaze() {
+            mazeContainer.innerHTML = '';
+            for (let y = 0; y < mazeSize; y++) {
+                for (let x = 0; x < mazeSize; x++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    if (maze[y][x] === 1) {
+                        cell.classList.add('wall');
+                    }
+                    if (x === playerPosition.x && y === playerPosition.y) {
+                        cell.classList.add('player');
+                    }
+                    if (x === exitPosition.x && y === exitPosition.y) {
+                        cell.classList.add('exit');
+                    }
+                    mazeContainer.appendChild(cell);
+                }
+            }
+        }
+
+        function movePlayer(dx, dy) {
+            const newX = playerPosition.x + dx;
+            const newY = playerPosition.y + dy;
+
+            if (
+                newX >= 0 &&
+                newX < mazeSize &&
+                newY >= 0 &&
+                newY < mazeSize &&
+                maze[newY][newX] === 0
+            ) {
+                playerPosition.x = newX;
+                playerPosition.y = newY;
+                createMaze();
+
+                if (newX === exitPosition.x && newY === exitPosition.y) {
+                    clearInterval(gameInterval);
+                    alert('ניצחת! הצלחת לצאת מהמבוך בזמן!');
+                }
+            }
+        }
+
+        function startGame() {
+            gameInterval = setInterval(() => {
+                timeRemaining--;
+                timerElement.textContent = timeRemaining;
+                if (timeRemaining === 0) {
+                    clearInterval(gameInterval);
+                    alert('נגמר הזמן! הפסדת!');
+                }
+            }, 1000);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'ArrowUp':
+                    movePlayer(0, -1);
+                    break;
+                case 'ArrowDown':
+                    movePlayer(0, 1);
+                    break;
+                case 'ArrowLeft':
+                    movePlayer(-1, 0);
+                    break;
+                case 'ArrowRight':
+                    movePlayer(1, 0);
+                    break;
+            }
+        });
+
+        createMaze();
+        startGame();
+    </script>
+</body>
+</html>
