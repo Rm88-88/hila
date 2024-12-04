@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק קליק מתקדם</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #gameArea {
+            position: relative;
+            width: 80vw;
+            height: 80vh;
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+        }
+        .target {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+        }
+        #timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div id="score">ניקוד: 0</div>
+        <div id="timer">זמן: 30</div>
+    </div>
+    <script>
+        const gameArea = document.getElementById('gameArea');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        let score = 0;
+        let timeLeft = 30;
+
+        function getRandomPosition() {
+            const x = Math.floor(Math.random() * (gameArea.clientWidth - 50));
+            const y = Math.floor(Math.random() * (gameArea.clientHeight - 50));
+            return { x, y };
+        }
+
+        function createTarget() {
+            const target = document.createElement('div');
+            target.className = 'target';
+            const { x, y } = getRandomPosition();
+            target.style.left = `${x}px`;
+            target.style.top = `${y}px`;
+
+            target.addEventListener('click', () => {
+                gameArea.removeChild(target);
+                score++;
+                scoreDisplay.textContent = `ניקוד: ${score}`;
+                createTarget();
+            });
+
+            gameArea.appendChild(target);
+        }
+
+        function startGame() {
+            createTarget();
+            const timer = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = `זמן: ${timeLeft}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    gameArea.innerHTML = `<h1>המשחק נגמר! הניקוד שלך: ${score}</h1>`;
+                }
+            }, 1000);
+        }
+
+        startGame();
+    </script>
+</body>
+</html>
