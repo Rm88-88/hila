@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק פיצוץ בלונים</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        #gameArea {
+            position: relative;
+            width: 80vw;
+            height: 80vh;
+            background-color: #ffffff;
+            border: 2px solid #007acc;
+            overflow: hidden;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: red;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            cursor: pointer;
+        }
+        .badBalloon {
+            background-color: black;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            color: #007acc;
+        }
+        #timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #007acc;
+        }
+        #gameOver {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div id="score">ניקוד: 0</div>
+        <div id="timer">זמן: 30</div>
+        <div id="gameOver">
+            <h1>המשחק נגמר!</h1>
+            <p>הניקוד שלך: <span id="finalScore"></span></p>
+            <button onclick="restartGame()">התחל מחדש</button>
+        </div>
+    </div>
+    <script>
+        const gameArea = document.getElementById('gameArea');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        const gameOverDisplay = document.getElementById('gameOver');
+        const finalScoreDisplay = document.getElementById('finalScore');
+        let score = 0;
+        let timeLeft = 30;
+        let balloonInterval;
+
+        function getRandomPosition() {
+            const x = Math.floor(Math.random() * (gameArea.clientWidth - 50));
+            const y = gameArea.clientHeight;
+            return { x, y };
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            if (Math.random() > 0.8) {
+                balloon.classList.add('badBalloon'); // אחד מכל חמישה בלונים יהיה רע
+            }
+            let { x, y } = getRandomPosition();
+            balloon.style.left = `${x}px`;
+            balloon.style.top = `${y}px`;
+
+            balloon.addEventListener('click', () => {
+                gameArea.removeChild(balloon);
+                if (balloon.classList.contains('badBalloon')) {
+                    score = Math.max(0, score - 5); // בלון רע מוריד ניקוד
+                } else {
+                    score++;
+                }
+                scoreDisplay.textContent = `ניקוד: ${score}`;
+            });
+
+            gameArea.appendChild(balloon);
+            moveBalloon(balloon);
+        }
+
+        function moveBalloon(balloon) {
+            const moveInterval = setInterval(() => {
+                const currentTop = parseInt(balloon.style.top);
+                if (currentTop <= -70) {
+                    gameArea.removeChild(balloon);
+                    clearInterval(moveInterval);
+                } else {
+                    balloon.style.top = `${currentTop - 5}px`;
+                }
+            }, 50);
+        }
+
+        function startGame() {
+            score = 0;
+            timeLeft = 30;
+            scoreDisplay.textContent = `ניקוד: ${score}`;
+            timerDisplay.textContent = `זמן: ${timeLeft}`;
+            gameOverDisplay.style.display = 'none';
+
+            balloonInterval = setInterval(createBalloon, 1000);
+            const timer = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = `זמן: ${timeLeft}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    clearInterval(balloonInterval);
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            gameArea.innerHTML = '';
+            gameOverDisplay.style.display = 'block';
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartGame() {
+            gameArea.innerHTML = '<div id="score">ניקוד: 0</div><div id="timer">זמן: 30</div>';
+            gameArea.appendChild(gameOverDisplay);
+            startGame();
+        }
+
+        startGame();
+    </script>
+</body>
+</html>
