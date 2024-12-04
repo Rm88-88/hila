@@ -1,0 +1,5734 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מילון עברי-אנגלי</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            background-color: #007BFF;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            font-size: 1.2em;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+        td {
+            padding: 10px;
+            text-align: right;
+            transition: transform 0.2s;
+        }
+        tr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(odd) {
+            background-color: #e9ecef;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>מילון עברי-אנגלי</h1>
+<input type="text" id="searchInput" placeholder="חפש מילה בעברית או באנגלית" onkeyup="filterTable()">
+<select id="sortSelect" onchange="sortTable()">
+    <option value="default">מיין לפי</option>
+    <option value="alphabet">סדר אלף-בית</option>
+    <option value="abc">סדר A, B, C</option>
+    <option value="category">קטגוריה</option>
+    <option value="root">שורש</option> <!-- מיון לפי שורש -->
+</select>
+
+<table id="dictionaryTable">
+    <thead>
+        <tr>
+            <th>עברית</th>
+            <th>אנגלית</th>
+            <th>קטגוריה</th>
+            <th>שורש</th> <!-- עמודת שורש -->
+        </tr>
+    </thead>
+    <tbody>
+        <!-- הוספת מילים נוספות -->
+    <!-- מילים קיימות -->
+    <tr>
+        <td>תפוח</td>
+        <td>Apple</td>
+        <td>אוכל</td>
+        <td>תפח</td>
+    </tr>
+    <tr>
+        <td>מלח</td>
+        <td>Salt</td>
+        <td>אוכל</td>
+        <td>מלח</td>
+    </tr>
+    <tr>
+        <td>מים</td>
+        <td>Water</td>
+        <td>אוכל</td>
+        <td>מים</td>
+    </tr>
+    <tr>
+        <td>לחם</td>
+        <td>Bread</td>
+        <td>אוכל</td>
+        <td>לחם</td>
+    </tr>
+    <tr>
+        <td>ביצה</td>
+        <td>Egg</td>
+        <td>אוכל</td>
+        <td>בצה</td>
+    </tr>
+    <tr>
+        <td>ללכת</td>
+        <td>To go</td>
+        <td>פעל</td>
+        <td>הלך</td>
+    </tr>
+    <tr>
+        <td>לשבת</td>
+        <td>To sit</td>
+        <td>פעל</td>
+        <td>ישב</td>
+    </tr>
+    <tr>
+        <td>לשחק</td>
+        <td>To play</td>
+        <td>פעל</td>
+        <td>שחק</td>
+    </tr>
+    <tr>
+        <td>לקרוא</td>
+        <td>To read</td>
+        <td>פעל</td>
+        <td>קרא</td>
+    </tr>
+    <tr>
+        <td>לכתוב</td>
+        <td>To write</td>
+        <td>פעל</td>
+        <td>כתב</td>
+    </tr>
+    <tr>
+        <td>ספר</td>
+        <td>Book</td>
+        <td>חינוך</td>
+        <td>ספר</td>
+    </tr>
+    <tr>
+        <td>מורה</td>
+        <td>Teacher</td>
+        <td>חינוך</td>
+        <td>הורה</td>
+    </tr>
+    <tr>
+        <td>חינוך</td>
+        <td>Education</td>
+        <td>חינוך</td>
+        <td>חנך</td>
+    </tr>
+    <tr>
+        <td>משפחה</td>
+        <td>Family</td>
+        <td>חיים</td>
+        <td>משפח</td>
+    </tr>
+    <tr>
+        <td>עבודה</td>
+        <td>Work</td>
+        <td>חיים</td>
+        <td>עבוד</td>
+    </tr>
+    <tr>
+        <td>חבר</td>
+        <td>Friend</td>
+        <td>חיים</td>
+        <td>חבר</td>
+    </tr>
+    <tr>
+        <td>חיים</td>
+        <td>Life</td>
+        <td>פילוסופיה</td>
+        <td>חיים</td>
+    </tr>
+    <tr>
+        <td>אהבה</td>
+        <td>Love</td>
+        <td>פילוסופיה</td>
+        <td>אהב</td>
+    </tr>
+    <tr>
+        <td>מחשבה</td>
+        <td>Thought</td>
+        <td>פילוסופיה</td>
+        <td>מחש</td>
+    </tr>
+    <tr>
+        <td>אמת</td>
+        <td>Truth</td>
+        <td>פילוסופיה</td>
+        <td>אמת</td>
+    </tr>
+    <tr>
+        <td>חופש</td>
+        <td>Freedom</td>
+        <td>פילוסופיה</td>
+        <td>חופש</td>
+    </tr>
+    <tr>
+        <td>שולחן</td>
+        <td>Table</td>
+        <td>רהיטים</td>
+        <td>שולח</td>
+    </tr>
+    <tr>
+        <td>כיסא</td>
+        <td>Chair</td>
+        <td>רהיטים</td>
+        <td>כיסא</td>
+    </tr>
+    <tr>
+        <td>מיטה</td>
+        <td>Bed</td>
+        <td>רהיטים</td>
+        <td>מתה</td>
+    </tr>
+    <tr>
+        <td>ארון</td>
+        <td>Cabinet</td>
+        <td>רהיטים</td>
+        <td>ארון</td>
+    </tr>
+    <tr>
+        <td>שידה</td>
+        <td>Nightstand</td>
+        <td>רהיטים</td>
+        <td>שיד</td>
+    </tr>
+    <!-- הוספת 150 מילים נוספות -->
+    <tr>
+        <td>תפוז</td>
+        <td>Orange</td>
+        <td>אוכל</td>
+        <td>תפז</td>
+    </tr>
+    <tr>
+        <td>אגס</td>
+        <td>Pear</td>
+        <td>אוכל</td>
+        <td>אגס</td>
+    </tr>
+    <tr>
+        <td>אורז</td>
+        <td>Rice</td>
+        <td>אוכל</td>
+        <td>אורז</td>
+    </tr>
+    <tr>
+        <td>תפוח אדמה</td>
+        <td>Potato</td>
+        <td>אוכל</td>
+        <td>תפח</td>
+    </tr>
+    <tr>
+        <td>סוכר</td>
+        <td>Sugar</td>
+        <td>אוכל</td>
+        <td>סוכר</td>
+    </tr>
+    <tr>
+        <td>שום</td>
+        <td>Garlic</td>
+        <td>אוכל</td>
+        <td>שום</td>
+    </tr>
+    <tr>
+        <td>בצל</td>
+        <td>Onion</td>
+        <td>אוכל</td>
+        <td>בצל</td>
+    </tr>
+    <tr>
+        <td>גזר</td>
+        <td>Carrot</td>
+        <td>אוכל</td>
+        <td>גזר</td>
+    </tr>
+    <tr>
+        <td>קישוא</td>
+        <td>Zucchini</td>
+        <td>אוכל</td>
+        <td>קיש</td>
+    </tr>
+    <tr>
+        <td>חסה</td>
+        <td>Lettuce</td>
+        <td>אוכל</td>
+        <td>חס</td>
+    </tr>
+    <tr>
+        <td>תפוח עץ</td>
+        <td>Fruit Tree</td>
+        <td>טבע</td>
+        <td>תפח</td>
+    </tr>
+    <tr>
+        <td>גפן</td>
+        <td>Vine</td>
+        <td>טבע</td>
+        <td>גפנ</td>
+    </tr>
+    <tr>
+        <td>שקד</td>
+        <td>Almond</td>
+        <td>אוכל</td>
+        <td>שקד</td>
+    </tr>
+    <tr>
+        <td>אגוז</td>
+        <td>Nut</td>
+        <td>אוכל</td>
+        <td>אגז</td>
+    </tr>
+    <tr>
+        <td>זית</td>
+        <td>Olive</td>
+        <td>אוכל</td>
+        <td>זית</td>
+    </tr>
+    <tr>
+        <td>דג</td>
+        <td>Fish</td>
+        <td>אוכל</td>
+        <td>דג</td>
+    </tr>
+    <tr>
+        <td>עוף</td>
+        <td>Chicken</td>
+        <td>אוכל</td>
+        <td>עוף</td>
+    </tr>
+    <tr>
+        <td>בשר</td>
+        <td>Meat</td>
+        <td>אוכל</td>
+        <td>בשר</td>
+    </tr>
+    <tr>
+        <td>פסטה</td>
+        <td>Pasta</td>
+        <td>אוכל</td>
+        <td>פסט</td>
+    </tr>
+    <tr>
+        <td>סלט</td>
+        <td>Salad</td>
+        <td>אוכל</td>
+        <td>סלט</td>
+    </tr>
+    <tr>
+        <td>ממרח</td>
+        <td>Spread</td>
+        <td>אוכל</td>
+        <td>מרח</td>
+    </tr>
+    <tr>
+        <td>מאפה</td>
+        <td>Pastery</td>
+        <td>אוכל</td>
+        <td>אפה</td>
+    </tr>
+    <tr>
+        <td>קפה</td>
+        <td>Coffee</td>
+        <td>אוכל</td>
+        <td>קפה</td>
+    </tr>
+    <tr>
+        <td>תה</td>
+        <td>Tea</td>
+        <td>אוכל</td>
+        <td>תה</td>
+    </tr>
+    <tr>
+        <td>מיץ</td>
+        <td>Juice</td>
+        <td>אוכל</td>
+        <td>מיץ</td>
+    </tr>
+    <tr>
+        <td>עוגה</td>
+        <td>Cake</td>
+        <td>אוכל</td>
+        <td>עוג</td>
+    </tr>
+    <tr>
+        <td>סוכריה</td>
+        <td>Candy</td>
+        <td>אוכל</td>
+        <td>סוכר</td>
+    </tr>
+    <tr>
+        <td>חטיף</td>
+        <td>Snack</td>
+        <td>אוכל</td>
+        <td>חטף</td>
+    </tr>
+    <tr>
+        <td>קינוח</td>
+        <td>Dessert</td>
+        <td>אוכל</td>
+        <td>קינח</td>
+    </tr>
+    <tr>
+        <td>שוקולד</td>
+        <td>Chocolate</td>
+        <td>אוכל</td>
+        <td>שוקל</td>
+    </tr>
+    <tr>
+        <td>גלידה</td>
+        <td>Ice Cream</td>
+        <td>אוכל</td>
+        <td>גלד</td>
+    </tr>
+    <tr>
+        <td>חלב</td>
+        <td>Milk</td>
+        <td>אוכל</td>
+        <td>חלב</td>
+    </tr>
+    <tr>
+        <td>יוגורט</td>
+        <td>Yogurt</td>
+        <td>אוכל</td>
+        <td>יוגורט</td>
+    </tr>
+    <tr>
+        <td>שמן</td>
+        <td>Oil</td>
+        <td>אוכל</td>
+        <td>שמן</td>
+    </tr>
+    <tr>
+        <td>חמאה</td>
+        <td>Butter</td>
+        <td>אוכל</td>
+        <td>חמנ</td>
+    </tr>
+    <tr>
+        <td>גבינה</td>
+        <td>Cheese</td>
+        <td>אוכל</td>
+        <td>גבנ</td>
+    </tr>
+    <tr>
+        <td>פיצה</td>
+        <td>Pizza</td>
+        <td>אוכל</td>
+        <td>פיצ</td>
+    </tr>
+    <tr>
+        <td>בורגרים</td>
+        <td>Burgers</td>
+        <td>אוכל</td>
+        <td>בורג</td>
+    </tr>
+    <tr>
+        <td>פנקייק</td>
+        <td>Pancake</td>
+        <td>אוכל</td>
+        <td>פנק</td>
+    </tr>
+    <tr>
+        <td>סושי</td>
+        <td>Sushi</td>
+        <td>אוכל</td>
+        <td>סוש</td>
+    </tr>
+    <tr>
+        <td>פירות ים</td>
+        <td>Seafood</td>
+        <td>אוכל</td>
+        <td>פירות</td>
+    </tr>
+    <tr>
+        <td>ירקות</td>
+        <td>Vegetables</td>
+        <td>אוכל</td>
+        <td>ירק</td>
+    </tr>
+    <tr>
+        <td>קטשופ</td>
+        <td>Ketchup</td>
+        <td>אוכל</td>
+        <td>קטש</td>
+    </tr>
+    <tr>
+        <td>ממרח שוקולד</td>
+        <td>Chocolate Spread</td>
+        <td>אוכל</td>
+        <td>ממרח</td>
+    </tr>
+    <tr>
+        <td>שייק</td>
+        <td>Shake</td>
+        <td>אוכל</td>
+        <td>שייק</td>
+    </tr>
+    <tr>
+        <td>סלט פירות</td>
+        <td>Fruit Salad</td>
+        <td>אוכל</td>
+        <td>סלט</td>
+    </tr>
+    <tr>
+        <td>מנורה</td>
+        <td>Lamp</td>
+        <td>רהיטים</td>
+        <td>נור</td>
+    </tr>
+    <tr>
+        <td>מראה</td>
+        <td>Mirror</td>
+        <td>רהיטים</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>שטיח</td>
+        <td>Carpet</td>
+        <td>רהיטים</td>
+        <td>שטח</td>
+    </tr>
+    <tr>
+        <td>כוננית</td>
+        <td>Bookshelf</td>
+        <td>רהיטים</td>
+        <td>כנן</td>
+    </tr>
+    <tr>
+        <td>מדף</td>
+        <td>Shelf</td>
+        <td>רהיטים</td>
+        <td>מדף</td>
+    </tr>
+    <tr>
+        <td>ספה</td>
+        <td>Sofa</td>
+        <td>רהיטים</td>
+        <td>ספה</td>
+    </tr>
+    <tr>
+        <td>כריות</td>
+        <td>Pillows</td>
+        <td>רהיטים</td>
+        <td>כרית</td>
+    </tr>
+    <tr>
+        <td>וילון</td>
+        <td>Curtain</td>
+        <td>רהיטים</td>
+        <td>וילן</td>
+    </tr>
+    <tr>
+        <td>שולחן קפה</td>
+        <td>Coffee Table</td>
+        <td>רהיטים</td>
+        <td>שולח</td>
+    </tr>
+    <tr>
+        <td>שזלונג</td>
+        <td>Chaise Longue</td>
+        <td>רהיטים</td>
+        <td>שזל</td>
+    </tr>
+    <tr>
+        <td>פינת אוכל</td>
+        <td>Dining Table</td>
+        <td>רהיטים</td>
+        <td>אוכל</td>
+    </tr>
+    <tr>
+        <td>כונן נעליים</td>
+        <td>Shoe Rack</td>
+        <td>רהיטים</td>
+        <td>כנן</td>
+    </tr>
+    <tr>
+        <td>שידת מגירות</td>
+        <td>Drawer Chest</td>
+        <td>רהיטים</td>
+        <td>שיד</td>
+    </tr>
+    <tr>
+        <td>מנורת קיר</td>
+        <td>Wall Lamp</td>
+        <td>רהיטים</td>
+        <td>נור</td>
+    </tr>
+    <tr>
+        <td>שולחן עבודה</td>
+        <td>Desk</td>
+        <td>רהיטים</td>
+        <td>שולח</td>
+    </tr>
+    <tr>
+        <td>כיסא הדום</td>
+        <td>Stool</td>
+        <td>רהיטים</td>
+        <td>הדם</td>
+    </tr>
+    <tr>
+        <td>מתלה בגדים</td>
+        <td>Clothes Hanger</td>
+        <td>רהיטים</td>
+        <td>תלה</td>
+    </tr>
+    <tr>
+        <td>מזרן</td>
+        <td>Mattress</td>
+        <td>רהיטים</td>
+        <td>זרן</td>
+    </tr>
+    <tr>
+        <td>ארגז מצעים</td>
+        <td>Linen Chest</td>
+        <td>רהיטים</td>
+        <td>ארגז</td>
+    </tr>
+    <tr>
+        <td>מחסום חדר</td>
+        <td>Room Divider</td>
+        <td>רהיטים</td>
+        <td>חסם</td>
+    </tr>
+    <tr>
+        <td>מנורת שולחן</td>
+        <td>Table Lamp</td>
+        <td>רהיטים</td>
+        <td>נור</td>
+    </tr>
+    <tr>
+        <td>מעמד לספרים</td>
+        <td>Book Stand</td>
+        <td>רהיטים</td>
+        <td>עמד</td>
+    </tr>
+    <tr>
+        <td>כוסית נרות</td>
+        <td>Candle Holder</td>
+        <td>רהיטים</td>
+        <td>נרת</td>
+    </tr>
+    <tr>
+        <td>שולחן צד</td>
+        <td>Side Table</td>
+        <td>רהיטים</td>
+        <td>שולח</td>
+    </tr>
+    <tr>
+        <td>מראה מעוצבת</td>
+        <td>Decorative Mirror</td>
+        <td>רהיטים</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>הר</td>
+        <td>Mountain</td>
+        <td>טבע</td>
+        <td>הרר</td>
+    </tr>
+    <tr>
+        <td>ים</td>
+        <td>Sea</td>
+        <td>טבע</td>
+        <td>ימם</td>
+    </tr>
+    <tr>
+        <td>נהר</td>
+        <td>River</td>
+        <td>טבע</td>
+        <td>נהר</td>
+    </tr>
+    <tr>
+        <td>שמיים</td>
+        <td>Sky</td>
+        <td>טבע</td>
+        <td>שמם</td>
+    </tr>
+    <tr>
+        <td>ענן</td>
+        <td>Cloud</td>
+        <td>טבע</td>
+        <td>ענן</td>
+    </tr>
+    <tr>
+        <td>רוח</td>
+        <td>Wind</td>
+        <td>טבע</td>
+        <td>רוח</td>
+    </tr>
+    <tr>
+        <td>גשם</td>
+        <td>Rain</td>
+        <td>טבע</td>
+        <td>גשם</td>
+    </tr>
+    <tr>
+        <td>שמש</td>
+        <td>Sun</td>
+        <td>טבע</td>
+        <td>שמש</td>
+    </tr>
+    <tr>
+        <td>ירח</td>
+        <td>Moon</td>
+        <td>טבע</td>
+        <td>ירח</td>
+    </tr>
+    <tr>
+        <td>כוכב</td>
+        <td>Star</td>
+        <td>טבע</td>
+        <td>כוכב</td>
+    </tr>
+    <tr>
+        <td>יער</td>
+        <td>Forest</td>
+        <td>טבע</td>
+        <td>יעיר</td>
+    </tr>
+    <tr>
+        <td>דשא</td>
+        <td>Grass</td>
+        <td>טבע</td>
+        <td>דשא</td>
+    </tr>
+    <tr>
+        <td>פרח</td>
+        <td>Flower</td>
+        <td>טבע</td>
+        <td>פרח</td>
+    </tr>
+    <tr>
+        <td>עץ</td>
+        <td>Tree</td>
+        <td>טבע</td>
+        <td>עצץ</td>
+    </tr>
+    <tr>
+        <td>סלע</td>
+        <td>Rock</td>
+        <td>טבע</td>
+        <td>סלע</td>
+    </tr>
+    <tr>
+        <td>חול</td>
+        <td>Sand</td>
+        <td>טבע</td>
+        <td>חול</td>
+    </tr>
+    <tr>
+        <td>מדבר</td>
+        <td>Desert</td>
+        <td>טבע</td>
+        <td>דבר</td>
+    </tr>
+    <tr>
+        <td>אדמה</td>
+        <td>Earth</td>
+        <td>טבע</td>
+        <td>אדם</td>
+    </tr>
+    <tr>
+        <td>נוף</td>
+        <td>Landscape</td>
+        <td>טבע</td>
+        <td>נוף</td>
+    </tr>
+    <tr>
+        <td>אש</td>
+        <td>Fire</td>
+        <td>טבע</td>
+        <td>אשש</td>
+    </tr>
+    <tr>
+        <td>מערה</td>
+        <td>Cave</td>
+        <td>טבע</td>
+        <td>ערה</td>
+    </tr>
+    <tr>
+        <td>מפל</td>
+        <td>Waterfall</td>
+        <td>טבע</td>
+        <td>נפל</td>
+    </tr>
+    <tr>
+        <td>אי</td>
+        <td>Island</td>
+        <td>טבע</td>
+        <td>אוה</td>
+    </tr>
+    <tr>
+        <td>אוקיינוס</td>
+        <td>Ocean</td>
+        <td>טבע</td>
+        <td>קינ</td>
+    </tr>
+    <tr>
+        <td>חקלאות</td>
+        <td>Agriculture</td>
+        <td>טבע</td>
+        <td>חקל</td>
+    </tr>
+    <tr>
+        <td>אב</td>
+        <td>Father</td>
+        <td>משפחה</td>
+        <td>אבב</td>
+    </tr>
+    <tr>
+        <td>אמא</td>
+        <td>Mother</td>
+        <td>משפחה</td>
+        <td>אמם</td>
+    </tr>
+    <tr>
+        <td>אח</td>
+        <td>Brother</td>
+        <td>משפחה</td>
+        <td>אחח</td>
+    </tr>
+    <tr>
+        <td>אחות</td>
+        <td>Sister</td>
+        <td>משפחה</td>
+        <td>אחת</td>
+    </tr>
+    <tr>
+        <td>סבא</td>
+        <td>Grandfather</td>
+        <td>משפחה</td>
+        <td>סבב</td>
+    </tr>
+    <tr>
+        <td>סבתא</td>
+        <td>Grandmother</td>
+        <td>משפחה</td>
+        <td>סבת</td>
+    </tr>
+    <tr>
+        <td>דוד</td>
+        <td>Uncle</td>
+        <td>משפחה</td>
+        <td>דוד</td>
+    </tr>
+    <tr>
+        <td>דודה</td>
+        <td>Aunt</td>
+        <td>משפחה</td>
+        <td>דוד</td>
+    </tr>
+    <tr>
+        <td>בן</td>
+        <td>Son</td>
+        <td>משפחה</td>
+        <td>בנה</td>
+    </tr>
+    <tr>
+        <td>בת</td>
+        <td>Daughter</td>
+        <td>משפחה</td>
+        <td>בתת</td>
+    </tr>
+    <tr>
+        <td>נכד</td>
+        <td>Grandson</td>
+        <td>משפחה</td>
+        <td>נכד</td>
+    </tr>
+    <tr>
+        <td>נכדה</td>
+        <td>Granddaughter</td>
+        <td>משפחה</td>
+        <td>נכד</td>
+    </tr>
+    <tr>
+        <td>בן דוד</td>
+        <td>Cousin (male)</td>
+        <td>משפחה</td>
+        <td>דוד</td>
+    </tr>
+    <tr>
+        <td>בת דודה</td>
+        <td>Cousin (female)</td>
+        <td>משפחה</td>
+        <td>דוד</td>
+    </tr>
+    <tr>
+        <td>חם</td>
+        <td>Son-in-law</td>
+        <td>משפחה</td>
+        <td>חתם</td>
+    </tr>
+    <tr>
+        <td>כלה</td>
+        <td>Daughter-in-law</td>
+        <td>משפחה</td>
+        <td>כלל</td>
+    </tr>
+    <tr>
+        <td>אחיין</td>
+        <td>Nephew</td>
+        <td>משפחה</td>
+        <td>אחנ</td>
+    </tr>
+    <tr>
+        <td>אחיינית</td>
+        <td>Niece</td>
+        <td>משפחה</td>
+        <td>אחנ</td>
+    </tr>
+    <tr>
+        <td>הורה</td>
+        <td>Parent</td>
+        <td>משפחה</td>
+        <td>הרה</td>
+    </tr>
+    <tr>
+        <td>צאצא</td>
+        <td>Descendant</td>
+        <td>משפחה</td>
+        <td>צאצ</td>
+    </tr>
+    <tr>
+        <td>אח מאומץ</td>
+        <td>Adopted Brother</td>
+        <td>משפחה</td>
+        <td>אמץ</td>
+    </tr>
+    <tr>
+        <td>אחות מאומצת</td>
+        <td>Adopted Sister</td>
+        <td>משפחה</td>
+        <td>אמץ</td>
+    </tr>
+    <tr>
+        <td>זוג</td>
+        <td>Couple</td>
+        <td>משפחה</td>
+        <td>זווג</td>
+    </tr>
+    <tr>
+        <td>גרעין משפחתי</td>
+        <td>Nuclear Family</td>
+        <td>משפחה</td>
+        <td>גרע</td>
+    </tr>
+    <tr>
+        <td>משפחה מורחבת</td>
+        <td>Extended Family</td>
+        <td>משפחה</td>
+        <td>רחב</td>
+    </tr>
+    <tr>
+        <td>בריאות</td>
+        <td>Health</td>
+        <td>חיים</td>
+        <td>ברא</td>
+    </tr>
+    <tr>
+        <td>חינוך</td>
+        <td>Education</td>
+        <td>חיים</td>
+        <td>חנך</td>
+    </tr>
+    <tr>
+        <td>קריירה</td>
+        <td>Career</td>
+        <td>חיים</td>
+        <td>קרר</td>
+    </tr>
+    <tr>
+        <td>כסף</td>
+        <td>Money</td>
+        <td>חיים</td>
+        <td>כסף</td>
+    </tr>
+    <tr>
+        <td>הכנסה</td>
+        <td>Income</td>
+        <td>חיים</td>
+        <td>כנס</td>
+    </tr>
+    <tr>
+        <td>השכלה</td>
+        <td>Education</td>
+        <td>חיים</td>
+        <td>שכל</td>
+    </tr>
+    <tr>
+        <td>מגורים</td>
+        <td>Residence</td>
+        <td>חיים</td>
+        <td>גור</td>
+    </tr>
+    <tr>
+        <td>אורח חיים</td>
+        <td>Lifestyle</td>
+        <td>חיים</td>
+        <td>חיה</td>
+    </tr>
+    <tr>
+        <td>חלום</td>
+        <td>Dream</td>
+        <td>חיים</td>
+        <td>חלם</td>
+    </tr>
+    <tr>
+        <td>מטרה</td>
+        <td>Goal</td>
+        <td>חיים</td>
+        <td>הרה</td>
+    </tr>
+    <tr>
+        <td>הצלחה</td>
+        <td>Success</td>
+        <td>חיים</td>
+        <td>צלח</td>
+    </tr>
+    <tr>
+        <td>חברות</td>
+        <td>Friendship</td>
+        <td>חיים</td>
+        <td>חבר</td>
+    </tr>
+    <tr>
+        <td>זוגיות</td>
+        <td>Relationship</td>
+        <td>חיים</td>
+        <td>זוג</td>
+    </tr>
+    <tr>
+        <td>בחירה</td>
+        <td>Choice</td>
+        <td>חיים</td>
+        <td>בחר</td>
+    </tr>
+    <tr>
+        <td>התפתחות</td>
+        <td>Development</td>
+        <td>חיים</td>
+        <td>פתח</td>
+    </tr>
+    <tr>
+        <td>תקשורת</td>
+        <td>Communication</td>
+        <td>חיים</td>
+        <td>קשר</td>
+    </tr>
+    <tr>
+        <td>חופשה</td>
+        <td>Vacation</td>
+        <td>חיים</td>
+        <td>חפש</td>
+    </tr>
+    <tr>
+        <td>עניין</td>
+        <td>Interest</td>
+        <td>חיים</td>
+        <td>ענה</td>
+    </tr>
+    <tr>
+        <td>תחביב</td>
+        <td>Hobby</td>
+        <td>חיים</td>
+        <td>חבב</td>
+    </tr>
+    <tr>
+        <td>משמעות</td>
+        <td>Meaning</td>
+        <td>חיים</td>
+        <td>שמע</td>
+    </tr>
+    <tr>
+        <td>אתגר</td>
+        <td>Challenge</td>
+        <td>חיים</td>
+        <td>גרה</td>
+    </tr>
+    <tr>
+        <td>התמודדות</td>
+        <td>Coping</td>
+        <td>חיים</td>
+        <td>דדה</td>
+    </tr>
+    <tr>
+        <td>יעד</td>
+        <td>Target</td>
+        <td>חיים</td>
+        <td>יעד</td>
+    </tr>
+    <tr>
+        <td>הישג</td>
+        <td>Achievement</td>
+        <td>חיים</td>
+        <td>שיג</td>
+    </tr>
+    <tr>
+        <td>הנאה</td>
+        <td>Pleasure</td>
+        <td>חיים</td>
+        <td>הנה</td>
+    </tr>
+            <tr>
+        <td>אוטובוס</td>
+        <td>Bus</td>
+        <td>תחבורה</td>
+        <td>אובס</td>
+    </tr>
+    <tr>
+        <td>רכבת</td>
+        <td>Train</td>
+        <td>תחבורה</td>
+        <td>רתק</td>
+    </tr>
+    <tr>
+        <td>מכונית</td>
+        <td>Car</td>
+        <td>תחבורה</td>
+        <td>מכונ</td>
+    </tr>
+    <tr>
+        <td>אופניים</td>
+        <td>Bicycle</td>
+        <td>תחבורה</td>
+        <td>אופנ</td>
+    </tr>
+    <tr>
+        <td>סירה</td>
+        <td>Boat</td>
+        <td>תחבורה</td>
+        <td>סור</td>
+    </tr>
+    <tr>
+        <td>טיסה</td>
+        <td>Flight</td>
+        <td>תחבורה</td>
+        <td>טס</td>
+    </tr>
+    <tr>
+        <td>מונית</td>
+        <td>Taxi</td>
+        <td>תחבורה</td>
+        <td>מונע</td>
+    </tr>
+    <tr>
+        <td>אופנוע</td>
+        <td>Motorcycle</td>
+        <td>תחבורה</td>
+        <td>אופנ</td>
+    </tr>
+    <tr>
+        <td>רכבל</td>
+        <td>Cable Car</td>
+        <td>תחבורה</td>
+        <td>רכב</td>
+    </tr>
+    <tr>
+        <td>תחנה</td>
+        <td>Station</td>
+        <td>תחבורה</td>
+        <td>תחנו</td>
+    </tr>
+    <tr>
+        <td>כביש</td>
+        <td>Road</td>
+        <td>תחבורה</td>
+        <td>כבש</td>
+    </tr>
+    <tr>
+        <td>גשר</td>
+        <td>Bridge</td>
+        <td>תחבורה</td>
+        <td>גוש</td>
+    </tr>
+    <tr>
+        <td>מסלול</td>
+        <td>Track</td>
+        <td>תחבורה</td>
+        <td>מסל</td>
+    </tr>
+    <tr>
+        <td>נמל</td>
+        <td>Port</td>
+        <td>תחבורה</td>
+        <td>נמל</td>
+    </tr>
+    <tr>
+        <td>הגה</td>
+        <td>Steering Wheel</td>
+        <td>תחבורה</td>
+        <td>הגה</td>
+    </tr>
+    <tr>
+        <td>דלק</td>
+        <td>Fuel</td>
+        <td>תחבורה</td>
+        <td>דלק</td>
+    </tr>
+    <tr>
+        <td>חניה</td>
+        <td>Parking</td>
+        <td>תחבורה</td>
+        <td>חנ</td>
+    </tr>
+    <tr>
+        <td>שלט</td>
+        <td>Sign</td>
+        <td>תחבורה</td>
+        <td>שלט</td>
+    </tr>
+    <tr>
+        <td>תמרור</td>
+        <td>Traffic Sign</td>
+        <td>תחבורה</td>
+        <td>תמרור</td>
+    </tr>
+    <tr>
+        <td>מערכת</td>
+        <td>System</td>
+        <td>תחבורה</td>
+        <td>מערך</td>
+    </tr>
+    <tr>
+        <td>כרטיס</td>
+        <td>Ticket</td>
+        <td>תחבורה</td>
+        <td>כרטיס</td>
+    </tr>
+    <tr>
+        <td>הסעה</td>
+        <td>Transport</td>
+        <td>תחבורה</td>
+        <td>הסע</td>
+    </tr>
+    <tr>
+        <td>נסיעה</td>
+        <td>Ride</td>
+        <td>תחבורה</td>
+        <td>נסע</td>
+    </tr>
+    <tr>
+        <td>שירות</td>
+        <td>Service</td>
+        <td>תחבורה</td>
+        <td>שרת</td>
+    </tr>
+    <tr>
+        <td>שיעור</td>
+        <td>Lesson</td>
+        <td>חינוך</td>
+        <td>שיל</td>
+    </tr>
+    <tr>
+        <td>בית ספר</td>
+        <td>School</td>
+        <td>חינוך</td>
+        <td>בית</td>
+    </tr>
+    <tr>
+        <td>תלמיד</td>
+        <td>Student</td>
+        <td>חינוך</td>
+        <td>מלמד</td>
+    </tr>
+    <tr>
+        <td>מבחן</td>
+        <td>Test</td>
+        <td>חינוך</td>
+        <td>בוחן</td>
+    </tr>
+    <tr>
+        <td>ספר לימוד</td>
+        <td>Textbook</td>
+        <td>חינוך</td>
+        <td>ספר</td>
+    </tr>
+    <tr>
+        <td>כיתה</td>
+        <td>Class</td>
+        <td>חינוך</td>
+        <td>כיתת</td>
+    </tr>
+    <tr>
+        <td>מורה</td>
+        <td>Teacher</td>
+        <td>חינוך</td>
+        <td>הורה</td>
+    </tr>
+    <tr>
+        <td>שיעורי בית</td>
+        <td>Homework</td>
+        <td>חינוך</td>
+        <td>שיעור</td>
+    </tr>
+    <tr>
+        <td>תעודה</td>
+        <td>Certificate</td>
+        <td>חינוך</td>
+        <td>תעודה</td>
+    </tr>
+    <tr>
+        <td>מבחן בגרות</td>
+        <td>Matriculation Exam</td>
+        <td>חינוך</td>
+        <td>בגרות</td>
+    </tr>
+    <tr>
+        <td>תואר</td>
+        <td>Degree</td>
+        <td>חינוך</td>
+        <td>תאר</td>
+    </tr>
+    <tr>
+        <td>סטודנט</td>
+        <td>Student</td>
+        <td>חינוך</td>
+        <td>סטודנט</td>
+    </tr>
+    <tr>
+        <td>אוניברסיטה</td>
+        <td>University</td>
+        <td>חינוך</td>
+        <td>אוניברס</td>
+    </tr>
+    <tr>
+        <td>קורס</td>
+        <td>Course</td>
+        <td>חינוך</td>
+        <td>קורס</td>
+    </tr>
+    <tr>
+        <td>חינוך</td>
+        <td>Education</td>
+        <td>חינוך</td>
+        <td>חנך</td>
+    </tr>
+    <tr>
+        <td>עשייה</td>
+        <td>Activity</td>
+        <td>חינוך</td>
+        <td>עשו</td>
+    </tr>
+    <tr>
+        <td>תוכנית לימודים</td>
+        <td>Curriculum</td>
+        <td>חינוך</td>
+        <td>תכנן</td>
+    </tr>
+    <tr>
+        <td>חוג</td>
+        <td>Extracurricular</td>
+        <td>חינוך</td>
+        <td>חוג</td>
+    </tr>
+    <tr>
+        <td>חינוך מיוחד</td>
+        <td>Special Education</td>
+        <td>חינוך</td>
+        <td>מיוחד</td>
+    </tr>
+    <tr>
+        <td>מרצה</td>
+        <td>Lecturer</td>
+        <td>חינוך</td>
+        <td>מרצה</td>
+    </tr>
+    <tr>
+        <td>תלמידה</td>
+        <td>Student (female)</td>
+        <td>חינוך</td>
+        <td>מלמד</td>
+    </tr>
+    <tr>
+        <td>מכינה</td>
+        <td>Preparatory Course</td>
+        <td>חינוך</td>
+        <td>מכין</td>
+    </tr>
+    <tr>
+        <td>תודעה</td>
+        <td>Consciousness</td>
+        <td>פילוסופיה</td>
+        <td>דע</td>
+    </tr>
+    <tr>
+        <td>מוסר</td>
+        <td>Morality</td>
+        <td>פילוסופיה</td>
+        <td>מוסר</td>
+    </tr>
+    <tr>
+        <td>חשיבה</td>
+        <td>Thinking</td>
+        <td>פילוסופיה</td>
+        <td>חשב</td>
+    </tr>
+    <tr>
+        <td>אמת</td>
+        <td>Truth</td>
+        <td>פילוסופיה</td>
+        <td>אמת</td>
+    </tr>
+    <tr>
+        <td>חירות</td>
+        <td>Freedom</td>
+        <td>פילוסופיה</td>
+        <td>חופשי</td>
+    </tr>
+    <tr>
+        <td>קיום</td>
+        <td>Existence</td>
+        <td>פילוסופיה</td>
+        <td>קיים</td>
+    </tr>
+    <tr>
+        <td>שיח</td>
+        <td>Dialogue</td>
+        <td>פילוסופיה</td>
+        <td>שיח</td>
+    </tr>
+    <tr>
+        <td>תכלית</td>
+        <td>Purpose</td>
+        <td>פילוסופיה</td>
+        <td>תכלל</td>
+    </tr>
+    <tr>
+        <td>הוויה</td>
+        <td>Being</td>
+        <td>פילוסופיה</td>
+        <td>היה</td>
+    </tr>
+    <tr>
+        <td>רציונליות</td>
+        <td>Rationality</td>
+        <td>פילוסופיה</td>
+        <td>רציונל</td>
+    </tr>
+    <tr>
+        <td>תופעה</td>
+        <td>Phenomenon</td>
+        <td>פילוסופיה</td>
+        <td>תופס</td>
+    </tr>
+    <tr>
+        <td>אונטולוגיה</td>
+        <td>Ontology</td>
+        <td>פילוסופיה</td>
+        <td>אונטו</td>
+    </tr>
+    <tr>
+        <td>אפיסטמולוגיה</td>
+        <td>Epistemology</td>
+        <td>פילוסופיה</td>
+        <td>אפיסטמ</td>
+    </tr>
+    <tr>
+        <td>פרדוקס</td>
+        <td>Paradox</td>
+        <td>פילוסופיה</td>
+        <td>פרדוקס</td>
+    </tr>
+    <tr>
+        <td>דיכוטומיה</td>
+        <td>Dichotomy</td>
+        <td>פילוסופיה</td>
+        <td>דיכוט</td>
+    </tr>
+    <tr>
+        <td>סובייקטיביות</td>
+        <td>Subjectivity</td>
+        <td>פילוסופיה</td>
+        <td>סובייקט</td>
+    </tr>
+    <tr>
+        <td>אידיאולוגיה</td>
+        <td>Ideology</td>
+        <td>פילוסופיה</td>
+        <td>אידיאולוג</td>
+    </tr>
+    <tr>
+        <td>תיאוריה</td>
+        <td>Theory</td>
+        <td>פילוסופיה</td>
+        <td>תיאור</td>
+    </tr>
+    <tr>
+        <td>אסתטיקה</td>
+        <td>Aesthetics</td>
+        <td>פילוסופיה</td>
+        <td>אסתט</td>
+    </tr>
+    <tr>
+        <td>סימבוליזם</td>
+        <td>Symbolism</td>
+        <td>פילוסופיה</td>
+        <td>סימבול</td>
+    </tr>
+    <tr>
+        <td>רציונליזם</td>
+        <td>Rationalism</td>
+        <td>פילוסופיה</td>
+        <td>רציונל</td>
+    </tr>
+    <tr>
+        <td>ללמוד</td>
+        <td>To learn</td>
+        <td>פעל</td>
+        <td>למד</td>
+    </tr>
+    <tr>
+        <td>ללכת</td>
+        <td>To go</td>
+        <td>פעל</td>
+        <td>הלך</td>
+    </tr>
+    <tr>
+        <td>לשחק</td>
+        <td>To play</td>
+        <td>פעל</td>
+        <td>שחק</td>
+    </tr>
+    <tr>
+        <td>לקרוא</td>
+        <td>To read</td>
+        <td>פעל</td>
+        <td>קרא</td>
+    </tr>
+    <tr>
+        <td>לכתוב</td>
+        <td>To write</td>
+        <td>פעל</td>
+        <td>כתב</td>
+    </tr>
+    <tr>
+        <td>לשיר</td>
+        <td>To sing</td>
+        <td>פעל</td>
+        <td>שר</td>
+    </tr>
+    <tr>
+        <td>לדבר</td>
+        <td>To speak</td>
+        <td>פעל</td>
+        <td>דיבר</td>
+    </tr>
+    <tr>
+        <td>לראות</td>
+        <td>To see</td>
+        <td>פעל</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>להרגיש</td>
+        <td>To feel</td>
+        <td>פעל</td>
+        <td>רגש</td>
+    </tr>
+    <tr>
+        <td>לחשוב</td>
+        <td>To think</td>
+        <td>פעל</td>
+        <td>חשב</td>
+    </tr>
+    <tr>
+        <td>לחייך</td>
+        <td>To smile</td>
+        <td>פעל</td>
+        <td>חייך</td>
+    </tr>
+    <tr>
+        <td>לעבוד</td>
+        <td>To work</td>
+        <td>פעל</td>
+        <td>עבד</td>
+    </tr>
+    <tr>
+        <td>לצחוק</td>
+        <td>To laugh</td>
+        <td>פעל</td>
+        <td>צחק</td>
+    </tr>
+    <tr>
+        <td>ללמוד</td>
+        <td>To study</td>
+        <td>פעל</td>
+        <td>למד</td>
+    </tr>
+    <tr>
+        <td>לסיים</td>
+        <td>To finish</td>
+        <td>פעל</td>
+        <td>סיים</td>
+    </tr>
+    <tr>
+        <td>לשפר</td>
+        <td>To improve</td>
+        <td>פעל</td>
+        <td>שיפר</td>
+    </tr>
+    <tr>
+        <td>לבקש</td>
+        <td>To ask</td>
+        <td>פעל</td>
+        <td>בקש</td>
+    </tr>
+    <tr>
+        <td>להצליח</td>
+        <td>To succeed</td>
+        <td>פעל</td>
+        <td>הצליח</td>
+    </tr>
+    <tr>
+        <td>לזכור</td>
+        <td>To remember</td>
+        <td>פעל</td>
+        <td>זכר</td>
+    </tr>
+    <tr>
+        <td>לסלוח</td>
+        <td>To forgive</td>
+        <td>פעל</td>
+        <td>סלח</td>
+    </tr>
+    <tr>
+        <td>לעזור</td>
+        <td>To help</td>
+        <td>פעל</td>
+        <td>עזר</td>
+    </tr>
+            <tr>
+        <td>ללמוד</td>
+        <td>To learn</td>
+        <td>פעל</td>
+        <td>למד</td>
+    </tr>
+    <tr>
+        <td>לומד</td>
+        <td>Learning</td>
+        <td>פעל</td>
+        <td>למד</td>
+    </tr>
+    <tr>
+        <td>למד</td>
+        <td>Learned</td>
+        <td>פעל</td>
+        <td>למד</td>
+    </tr>
+    <tr>
+        <td>ילמד</td>
+        <td>Will learn</td>
+        <td>פעל</td>
+        <td>למד</td>
+    </tr>
+    <tr>
+        <td>למד!</td>
+        <td>Learn!</td>
+        <td>פעל</td>
+        <td>למד</td>
+    </tr>
+    <tr>
+        <td>ללכת</td>
+        <td>To go</td>
+        <td>פעל</td>
+        <td>הלך</td>
+    </tr>
+    <tr>
+        <td>הולך</td>
+        <td>Going</td>
+        <td>פעל</td>
+        <td>הלך</td>
+    </tr>
+    <tr>
+        <td>הלך</td>
+        <td>Went</td>
+        <td>פעל</td>
+        <td>הלך</td>
+    </tr>
+    <tr>
+        <td>ילך</td>
+        <td>Will go</td>
+        <td>פעל</td>
+        <td>הלך</td>
+    </tr>
+    <tr>
+        <td>לך!</td>
+        <td>Go!</td>
+        <td>פעל</td>
+        <td>הלך</td>
+    </tr>
+    <tr>
+        <td>לשחק</td>
+        <td>To play</td>
+        <td>פעל</td>
+        <td>שחק</td>
+    </tr>
+    <tr>
+        <td>משחק</td>
+        <td>Playing</td>
+        <td>פעל</td>
+        <td>שחק</td>
+    </tr>
+    <tr>
+        <td>שיחק</td>
+        <td>Played</td>
+        <td>פעל</td>
+        <td>שחק</td>
+    </tr>
+    <tr>
+        <td>ישחק</td>
+        <td>Will play</td>
+        <td>פעל</td>
+        <td>שחק</td>
+    </tr>
+    <tr>
+        <td>שחק!</td>
+        <td>Play!</td>
+        <td>פעל</td>
+        <td>שחק</td>
+    </tr>
+    <tr>
+        <td>לקרוא</td>
+        <td>To read</td>
+        <td>פעל</td>
+        <td>קרא</td>
+    </tr>
+    <tr>
+        <td>קורא</td>
+        <td>Reading</td>
+        <td>פעל</td>
+        <td>קרא</td>
+    </tr>
+    <tr>
+        <td>קרא</td>
+        <td>Read</td>
+        <td>פעל</td>
+        <td>קרא</td>
+    </tr>
+    <tr>
+        <td>יקרא</td>
+        <td>Will read</td>
+        <td>פעל</td>
+        <td>קרא</td>
+    </tr>
+    <tr>
+        <td>קרא!</td>
+        <td>Read!</td>
+        <td>פעל</td>
+        <td>קרא</td>
+    </tr>
+    <tr>
+        <td>לכתוב</td>
+        <td>To write</td>
+        <td>פעל</td>
+        <td>כתב</td>
+    </tr>
+    <tr>
+        <td>כותב</td>
+        <td>Writing</td>
+        <td>פעל</td>
+        <td>כתב</td>
+    </tr>
+    <tr>
+        <td>כתב</td>
+        <td>Wrote</td>
+        <td>פעל</td>
+        <td>כתב</td>
+    </tr>
+    <tr>
+        <td>יכתוב</td>
+        <td>Will write</td>
+        <td>פעל</td>
+        <td>כתב</td>
+    </tr>
+    <tr>
+        <td>כתוב!</td>
+        <td>Write!</td>
+        <td>פעל</td>
+        <td>כתב</td>
+    </tr>
+    <tr>
+        <td>לשיר</td>
+        <td>To sing</td>
+        <td>פעל</td>
+        <td>שר</td>
+    </tr>
+    <tr>
+        <td>שר</td>
+        <td>Singing</td>
+        <td>פעל</td>
+        <td>שר</td>
+    </tr>
+    <tr>
+        <td>שר</td>
+        <td>Sang</td>
+        <td>פעל</td>
+        <td>שר</td>
+    </tr>
+    <tr>
+        <td>ישיר</td>
+        <td>Will sing</td>
+        <td>פעל</td>
+        <td>שר</td>
+    </tr>
+    <tr>
+        <td>שיר!</td>
+        <td>Sing!</td>
+        <td>פעל</td>
+        <td>שר</td>
+    </tr>
+    <tr>
+        <td>לדבר</td>
+        <td>To speak</td>
+        <td>פעל</td>
+        <td>דבר</td>
+    </tr>
+    <tr>
+        <td>מדבר</td>
+        <td>Speaking</td>
+        <td>פעל</td>
+        <td>דבר</td>
+    </tr>
+    <tr>
+        <td>דיבר</td>
+        <td>Spoke</td>
+        <td>פעל</td>
+        <td>דבר</td>
+    </tr>
+    <tr>
+        <td>ידבר</td>
+        <td>Will speak</td>
+        <td>פעל</td>
+        <td>דבר</td>
+    </tr>
+    <tr>
+        <td>דבר!</td>
+        <td>Speak!</td>
+        <td>פעל</td>
+        <td>דבר</td>
+    </tr>
+    <tr>
+        <td>לראות</td>
+        <td>To see</td>
+        <td>פעל</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>רואה</td>
+        <td>Seeing</td>
+        <td>פעל</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>ראה</td>
+        <td>Saw</td>
+        <td>פעל</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>יראה</td>
+        <td>Will see</td>
+        <td>פעל</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>ראה!</td>
+        <td>See!</td>
+        <td>פעל</td>
+        <td>ראה</td>
+    </tr>
+    <tr>
+        <td>להרגיש</td>
+        <td>To feel</td>
+        <td>פעל</td>
+        <td>רגש</td>
+    </tr>
+    <tr>
+        <td>מרגיש</td>
+        <td>Feeling</td>
+        <td>פעל</td>
+        <td>רגש</td>
+    </tr>
+    <tr>
+        <td>הרגיש</td>
+        <td>Felt</td>
+        <td>פעל</td>
+        <td>רגש</td>
+    </tr>
+    <tr>
+        <td>ירגיש</td>
+        <td>Will feel</td>
+        <td>פעל</td>
+        <td>רגש</td>
+    </tr>
+    <tr>
+        <td>הרגש!</td>
+        <td>Feel!</td>
+        <td>פעל</td>
+        <td>רגש</td>
+    </tr>
+    <tr>
+        <td>לחשוב</td>
+        <td>To think</td>
+        <td>פעל</td>
+        <td>חשב</td>
+    </tr>
+    <tr>
+        <td>חושב</td>
+        <td>Thinking</td>
+        <td>פעל</td>
+        <td>חשב</td>
+    </tr>
+    <tr>
+        <td>חשב</td>
+        <td>Thought</td>
+        <td>פעל</td>
+        <td>חשב</td>
+    </tr>
+    <tr>
+        <td>יחשוב</td>
+        <td>Will think</td>
+        <td>פעל</td>
+        <td>חשב</td>
+    </tr>
+    <tr>
+        <td>חשוב!</td>
+        <td>Think!</td>
+        <td>פעל</td>
+        <td>חשב</td>
+    </tr>
+    <tr>
+        <td>לחייך</td>
+        <td>To smile</td>
+        <td>פעל</td>
+        <td>חייך</td>
+    </tr>
+    <tr>
+        <td>מחייך</td>
+        <td>Smiling</td>
+        <td>פעל</td>
+        <td>חייך</td>
+    </tr>
+    <tr>
+        <td>חייך</td>
+        <td>Smiled</td>
+        <td>פעל</td>
+        <td>חייך</td>
+    </tr>
+    <tr>
+        <td>יחייך</td>
+        <td>Will smile</td>
+        <td>פעל</td>
+        <td>חייך</td>
+    </tr>
+    <tr>
+        <td>חייך!</td>
+        <td>Smile!</td>
+        <td>פעל</td>
+        <td>חייך</td>
+    </tr>
+    <tr>
+        <td>לעבוד</td>
+        <td>To work</td>
+        <td>פעל</td>
+        <td>עבד</td>
+    </tr>
+    <tr>
+        <td>עובד</td>
+        <td>Working</td>
+        <td>פעל</td>
+        <td>עבד</td>
+    </tr>
+    <tr>
+        <td>עבד</td>
+        <td>Worked</td>
+        <td>פעל</td>
+        <td>עבד</td>
+    </tr>
+    <tr>
+        <td>יעבוד</td>
+        <td>Will work</td>
+        <td>פעל</td>
+        <td>עבד</td>
+    </tr>
+    <tr>
+        <td>עבוד!</td>
+        <td>Work!</td>
+        <td>פעל</td>
+        <td>עבד</td>
+    </tr>
+    <tr>
+        <td>לצחוק</td>
+        <td>To laugh</td>
+        <td>פעל</td>
+        <td>צחק</td>
+    </tr>
+    <tr>
+        <td>צוחק</td>
+        <td>Laughing</td>
+        <td>פעל</td>
+        <td>צחק</td>
+    </tr>
+    <tr>
+        <td>צחק</td>
+        <td>Laughed</td>
+        <td>פעל</td>
+        <td>צחק</td>
+    </tr>
+    <tr>
+        <td>יצחק</td>
+        <td>Will laugh</td>
+        <td>פעל</td>
+        <td>צחק</td>
+    </tr>
+    <tr>
+        <td>צחק!</td>
+        <td>Laugh!</td>
+        <td>פעל</td>
+        <td>צחק</td>
+    </tr>
+    <tr>
+        <td>לסיים</td>
+        <td>To finish</td>
+        <td>פעל</td>
+        <td>סיים</td>
+    </tr>
+    <tr>
+        <td>מסיים</td>
+        <td>Finishing</td>
+        <td>פעל</td>
+        <td>סיים</td>
+    </tr>
+    <tr>
+        <td>סיים</td>
+        <td>Finished</td>
+        <td>פעל</td>
+        <td>סיים</td>
+    </tr>
+    <tr>
+        <td>יסיים</td>
+        <td>Will finish</td>
+        <td>פעל</td>
+        <td>סיים</td>
+    </tr>
+    <tr>
+        <td>סיים!</td>
+        <td>Finish!</td>
+        <td>פעל</td>
+        <td>סיים</td>
+    </tr>
+    <tr>
+        <td>לשפר</td>
+        <td>To improve</td>
+        <td>פעל</td>
+        <td>שיפר</td>
+    </tr>
+    <tr>
+        <td>משפר</td>
+        <td>Improving</td>
+        <td>פעל</td>
+        <td>שיפר</td>
+    </tr>
+    <tr>
+        <td>שיפר</td>
+        <td>Improved</td>
+        <td>פעל</td>
+        <td>שיפר</td>
+    </tr>
+    <tr>
+        <td>ישפר</td>
+        <td>Will improve</td>
+        <td>פעל</td>
+        <td>שיפר</td>
+    </tr>
+    <tr>
+        <td>רופא</td>
+        <td>Doctor</td>
+        <td>מקצוע</td>
+        <td>רפא</td>
+    </tr>
+    <tr>
+        <td>מהנדס</td>
+        <td>Engineer</td>
+        <td>מקצוע</td>
+        <td>הנד</td>
+    </tr>
+    <tr>
+        <td>מורה</td>
+        <td>Teacher</td>
+        <td>מקצוע</td>
+        <td>ירה</td>
+    </tr>
+    <tr>
+        <td>עורך דין</td>
+        <td>Lawyer</td>
+        <td>מקצוע</td>
+        <td>דין</td>
+    </tr>
+    <tr>
+        <td>אדריכל</td>
+        <td>Architect</td>
+        <td>מקצוע</td>
+        <td>כלל</td>
+    </tr>
+    <tr>
+        <td>שף</td>
+        <td>Chef</td>
+        <td>מקצוע</td>
+        <td>שפ</td>
+    </tr>
+    <tr>
+        <td>טייס</td>
+        <td>Pilot</td>
+        <td>מקצוע</td>
+        <td>טס</td>
+    </tr>
+    <tr>
+        <td>רוקח</td>
+        <td>Pharmacist</td>
+        <td>מקצוע</td>
+        <td>רקח</td>
+    </tr>
+    <tr>
+        <td>פסיכולוג</td>
+        <td>Psychologist</td>
+        <td>מקצוע</td>
+        <td>סכל</td>
+    </tr>
+    <tr>
+        <td>וטרינר</td>
+        <td>Veterinarian</td>
+        <td>מקצוע</td>
+        <td>טרן</td>
+    </tr>
+    <tr>
+        <td>עיתונאי</td>
+        <td>Journalist</td>
+        <td>מקצוע</td>
+        <td>ידע</td>
+    </tr>
+    <tr>
+        <td>שוטר</td>
+        <td>Police Officer</td>
+        <td>מקצוע</td>
+        <td>שטר</td>
+    </tr>
+    <tr>
+        <td>כבאי</td>
+        <td>Firefighter</td>
+        <td>מקצוע</td>
+        <td>כבה</td>
+    </tr>
+    <tr>
+        <td>מאמן</td>
+        <td>Coach</td>
+        <td>מקצוע</td>
+        <td>אמן</td>
+    </tr>
+    <tr>
+        <td>גנן</td>
+        <td>Gardener</td>
+        <td>מקצוע</td>
+        <td>גנן</td>
+    </tr>
+    <tr>
+        <td>זמר</td>
+        <td>Singer</td>
+        <td>מקצוע</td>
+        <td>זמר</td>
+    </tr>
+    <tr>
+        <td>שחקן</td>
+        <td>Actor</td>
+        <td>מקצוע</td>
+        <td>חקן</td>
+    </tr>
+    <tr>
+        <td>צייר</td>
+        <td>Painter</td>
+        <td>מקצוע</td>
+        <td>ציר</td>
+    </tr>
+    <tr>
+        <td>פסל</td>
+        <td>Sculptor</td>
+        <td>מקצוע</td>
+        <td>פסל</td>
+    </tr>
+    <tr>
+        <td>רקדן</td>
+        <td>Dancer</td>
+        <td>מקצוע</td>
+        <td>רקד</td>
+    </tr>
+    <tr>
+        <td>אחות</td>
+        <td>Nurse</td>
+        <td>מקצוע</td>
+        <td>אחה</td>
+    </tr>
+    <tr>
+        <td>סופר</td>
+        <td>Writer</td>
+        <td>מקצוע</td>
+        <td>ספר</td>
+    </tr>
+    <tr>
+        <td>מוכר</td>
+        <td>Salesman</td>
+        <td>מקצוע</td>
+        <td>מכר</td>
+    </tr>
+    <tr>
+        <td>בנאי</td>
+        <td>Builder</td>
+        <td>מקצוע</td>
+        <td>בנה</td>
+    </tr>
+    <tr>
+        <td>נגר</td>
+        <td>Carpenter</td>
+        <td>מקצוע</td>
+        <td>נגר</td>
+    </tr>
+    <tr>
+        <td>חשמלאי</td>
+        <td>Electrician</td>
+        <td>מקצוע</td>
+        <td>חשל</td>
+    </tr>
+    <tr>
+        <td>אינסטלטור</td>
+        <td>Plumber</td>
+        <td>מקצוע</td>
+        <td>טור</td>
+    </tr>
+    <tr>
+        <td>שרברב</td>
+        <td>Plumber</td>
+        <td>מקצוע</td>
+        <td>רבב</td>
+    </tr>
+    <tr>
+        <td>מלצר</td>
+        <td>Waiter</td>
+        <td>מקצוע</td>
+        <td>לצר</td>
+    </tr>
+    <tr>
+        <td>טבח</td>
+        <td>Cook</td>
+        <td>מקצוע</td>
+        <td>טבח</td>
+    </tr>
+    <tr>
+        <td>מנהל</td>
+        <td>Manager</td>
+        <td>מקצוע</td>
+        <td>הל</td>
+    </tr>
+    <tr>
+        <td>עובד סוציאלי</td>
+        <td>Social Worker</td>
+        <td>מקצוע</td>
+        <td>עבד</td>
+    </tr>
+    <tr>
+        <td>ספרן</td>
+        <td>Librarian</td>
+        <td>מקצוע</td>
+        <td>ספר</td>
+    </tr>
+    <tr>
+        <td>דייג</td>
+        <td>Fisherman</td>
+        <td>מקצוע</td>
+        <td>דוג</td>
+    </tr>
+    <tr>
+        <td>חקלאי</td>
+        <td>Farmer</td>
+        <td>מקצוע</td>
+        <td>קלא</td>
+    </tr>
+    <tr>
+        <td>מדריך</td>
+        <td>Guide</td>
+        <td>מקצוע</td>
+        <td>דרך</td>
+    </tr>
+    <tr>
+        <td>נהג</td>
+        <td>Driver</td>
+        <td>מקצוע</td>
+        <td>נהג</td>
+    </tr>
+    <tr>
+        <td>חייל</td>
+        <td>Soldier</td>
+        <td>מקצוע</td>
+        <td>חיל</td>
+    </tr>
+    <tr>
+        <td>שגריר</td>
+        <td>Ambassador</td>
+        <td>מקצוע</td>
+        <td>גרר</td>
+    </tr>
+    <tr>
+        <td>מתרגם</td>
+        <td>Translator</td>
+        <td>מקצוע</td>
+        <td>רגם</td>
+    </tr>
+    <tr>
+        <td>ישראל</td>
+        <td>Israel</td>
+        <td>גאוגרפיה</td>
+        <td>שרל</td>
+    </tr>
+    <tr>
+        <td>ארצות הברית</td>
+        <td>United States</td>
+        <td>גאוגרפיה</td>
+        <td>ברת</td>
+    </tr>
+    <tr>
+        <td>צרפת</td>
+        <td>France</td>
+        <td>גאוגרפיה</td>
+        <td>רפת</td>
+    </tr>
+    <tr>
+        <td>גרמניה</td>
+        <td>Germany</td>
+        <td>גאוגרפיה</td>
+        <td>מנה</td>
+    </tr>
+    <tr>
+        <td>יפן</td>
+        <td>Japan</td>
+        <td>גאוגרפיה</td>
+        <td>פן</td>
+    </tr>
+    <tr>
+        <td>סין</td>
+        <td>China</td>
+        <td>גאוגרפיה</td>
+        <td>סין</td>
+    </tr>
+    <tr>
+        <td>רוסיה</td>
+        <td>Russia</td>
+        <td>גאוגרפיה</td>
+        <td>רוס</td>
+    </tr>
+    <tr>
+        <td>אנגליה</td>
+        <td>England</td>
+        <td>גאוגרפיה</td>
+        <td>גלה</td>
+    </tr>
+    <tr>
+        <td>איטליה</td>
+        <td>Italy</td>
+        <td>גאוגרפיה</td>
+        <td>טלה</td>
+    </tr>
+    <tr>
+        <td>קנדה</td>
+        <td>Canada</td>
+        <td>גאוגרפיה</td>
+        <td>נדה</td>
+    </tr>
+    <tr>
+        <td>אוסטרליה</td>
+        <td>Australia</td>
+        <td>גאוגרפיה</td>
+        <td>טרל</td>
+    </tr>
+    <tr>
+        <td>ברזיל</td>
+        <td>Brazil</td>
+        <td>גאוגרפיה</td>
+        <td>זיל</td>
+    </tr>
+    <tr>
+        <td>הודו</td>
+        <td>India</td>
+        <td>גאוגרפיה</td>
+        <td>הוד</td>
+    </tr>
+    <tr>
+        <td>מצרים</td>
+        <td>Egypt</td>
+        <td>גאוגרפיה</td>
+        <td>צרם</td>
+    </tr>
+    <tr>
+        <td>תורכיה</td>
+        <td>Turkey</td>
+        <td>גאוגרפיה</td>
+        <td>רכה</td>
+    </tr>
+    <tr>
+        <td>דנמרק</td>
+        <td>Denmark</td>
+        <td>גאוגרפיה</td>
+        <td>מרק</td>
+    </tr>
+    <tr>
+        <td>שבדיה</td>
+        <td>Sweden</td>
+        <td>גאוגרפיה</td>
+        <td>בדה</td>
+    </tr>
+    <tr>
+        <td>נורבגיה</td>
+        <td>Norway</td>
+        <td>גאוגרפיה</td>
+        <td>רבג</td>
+    </tr>
+    <tr>
+        <td>ספרד</td>
+        <td>Spain</td>
+        <td>גאוגרפיה</td>
+        <td>פרד</td>
+    </tr>
+    <tr>
+        <td>יוון</td>
+        <td>Greece</td>
+        <td>גאוגרפיה</td>
+        <td>וון</td>
+    </tr>
+    <tr>
+        <td>פולין</td>
+        <td>Poland</td>
+        <td>גאוגרפיה</td>
+        <td>לין</td>
+    </tr>
+    <tr>
+        <td>שוויץ</td>
+        <td>Switzerland</td>
+        <td>גאוגרפיה</td>
+        <td>ויץ</td>
+    </tr>
+    <tr>
+        <td>בלגיה</td>
+        <td>Belgium</td>
+        <td>גאוגרפיה</td>
+        <td>לגה</td>
+    </tr>
+    <tr>
+        <td>הולנד</td>
+        <td>Netherlands</td>
+        <td>גאוגרפיה</td>
+        <td>לנד</td>
+    </tr>
+    <tr>
+        <td>אירן</td>
+        <td>Iran</td>
+        <td>גאוגרפיה</td>
+        <td>רן</td>
+    </tr>
+    <tr>
+        <td>עירק</td>
+        <td>Iraq</td>
+        <td>גאוגרפיה</td>
+        <td>רק</td>
+    </tr>
+    <tr>
+        <td>סעודיה</td>
+        <td>Saudi Arabia</td>
+        <td>גאוגרפיה</td>
+        <td>עוד</td>
+    </tr>
+    <tr>
+        <td>מרוקו</td>
+        <td>Morocco</td>
+        <td>גאוגרפיה</td>
+        <td>רוק</td>
+    </tr>
+    <tr>
+        <td>תוניסיה</td>
+        <td>Tunisia</td>
+        <td>גאוגרפיה</td>
+        <td>סיה</td>
+    </tr>
+    <tr>
+        <td>איחוד האמירויות</td>
+        <td>United Arab Emirates</td>
+        <td>גאוגרפיה</td>
+        <td>חד</td>
+    </tr>
+    <tr>
+        <td>קוריאה</td>
+        <td>Korea</td>
+        <td>גאוגרפיה</td>
+        <td>ריה</td>
+    </tr>
+    <tr>
+        <td>מקסיקו</td>
+        <td>Mexico</td>
+        <td>גאוגרפיה</td>
+        <td>סיקו</td>
+    </tr>
+    <tr>
+        <td>אינדונזיה</td>
+        <td>Indonesia</td>
+        <td>גאוגרפיה</td>
+        <td>דוז</td>
+    </tr>
+    <tr>
+        <td>פקיסטן</td>
+        <td>Pakistan</td>
+        <td>גאוגרפיה</td>
+        <td>סטן</td>
+    </tr>
+    <tr>
+        <td>בנגלדש</td>
+        <td>Bangladesh</td>
+        <td>גאוגרפיה</td>
+        <td>דש</td>
+    </tr>
+    <tr>
+        <td>ארגנטינה</td>
+        <td>Argentina</td>
+        <td>גאוגרפיה</td>
+        <td>טינה</td>
+    </tr>
+    <tr>
+        <td>צ'ילה</td>
+        <td>Chile</td>
+        <td>גאוגרפיה</td>
+        <td>לה</td>
+    </tr>
+    <tr>
+        <td>קולומביה</td>
+        <td>Colombia</td>
+        <td>גאוגרפיה</td>
+        <td>מבה</td>
+    </tr>
+    <tr>
+        <td>פרגוואי</td>
+        <td>Paraguay</td>
+        <td>גאוגרפיה</td>
+        <td>גוואי</td>
+    </tr>
+    <tr>
+        <td>אורוגוואי</td>
+        <td>Uruguay</td>
+        <td>גאוגרפיה</td>
+        <td>גוואי</td>
+    </tr>
+    <tr>
+        <td>נפאל</td>
+        <td>Nepal</td>
+        <td>גאוגרפיה</td>
+        <td>פאל</td>
+    </tr>
+    <tr>
+        <td>בהוטן</td>
+        <td>Bhutan</td>
+        <td>גאוגרפיה</td>
+        <td>תן</td>
+    </tr>
+    <tr>
+        <td>אפגניסטן</td>
+        <td>Afghanistan</td>
+        <td>גאוגרפיה</td>
+        <td>גנס</td>
+    </tr>
+    <tr>
+        <td>מונגוליה</td>
+        <td>Mongolia</td>
+        <td>גאוגרפיה</td>
+        <td>גול</td>
+    </tr>
+    <tr>
+        <td>סינגפור</td>
+        <td>Singapore</td>
+        <td>גאוגרפיה</td>
+        <td>גפר</td>
+    </tr>
+    <tr>
+        <td>קמבודיה</td>
+        <td>Cambodia</td>
+        <td>גאוגרפיה</td>
+        <td>דיה</td>
+    </tr>
+    <tr>
+        <td>לאוס</td>
+        <td>Laos</td>
+        <td>גאוגרפיה</td>
+        <td>אוס</td>
+    </tr>
+        <tr>
+        <td>פיזיקה</td>
+        <td>Physics</td>
+        <td>מדע</td>
+        <td>פיז</td>
+    </tr>
+    <tr>
+        <td>כימיה</td>
+        <td>Chemistry</td>
+        <td>מדע</td>
+        <td>כמה</td>
+    </tr>
+    <tr>
+        <td>ביולוגיה</td>
+        <td>Biology</td>
+        <td>מדע</td>
+        <td>חיה</td>
+    </tr>
+    <tr>
+        <td>מתמטיקה</td>
+        <td>Mathematics</td>
+        <td>מדע</td>
+        <td>מתח</td>
+    </tr>
+    <tr>
+        <td>אסטרונומיה</td>
+        <td>Astronomy</td>
+        <td>מדע</td>
+        <td>כוכב</td>
+    </tr>
+    <tr>
+        <td>גנטיקה</td>
+        <td>Genetics</td>
+        <td>מדע</td>
+        <td>גנן</td>
+    </tr>
+    <tr>
+        <td>אקולוגיה</td>
+        <td>Ecology</td>
+        <td>מדע</td>
+        <td>חיה</td>
+    </tr>
+    <tr>
+        <td>אנטומיה</td>
+        <td>Anatomy</td>
+        <td>מדע</td>
+        <td>תאם</td>
+    </tr>
+    <tr>
+        <td>מיקרוביולוגיה</td>
+        <td>Microbiology</td>
+        <td>מדע</td>
+        <td>חיה</td>
+    </tr>
+    <tr>
+        <td>אנרגיה</td>
+        <td>Energy</td>
+        <td>מדע</td>
+        <td>רגה</td>
+    </tr>
+    <tr>
+        <td>חומר</td>
+        <td>Matter</td>
+        <td>מדע</td>
+        <td>חמר</td>
+    </tr>
+    <tr>
+        <td>מוח</td>
+        <td>Brain</td>
+        <td>מדע</td>
+        <td>מוח</td>
+    </tr>
+    <tr>
+        <td>גלקסיה</td>
+        <td>Galaxy</td>
+        <td>מדע</td>
+        <td>לאה</td>
+    </tr>
+    <tr>
+        <td>אטום</td>
+        <td>Atom</td>
+        <td>מדע</td>
+        <td>אטם</td>
+    </tr>
+    <tr>
+        <td>חיידק</td>
+        <td>Bacteria</td>
+        <td>מדע</td>
+        <td>חדק</td>
+    </tr>
+    <tr>
+        <td>נגיף</td>
+        <td>Virus</td>
+        <td>מדע</td>
+        <td>גיף</td>
+    </tr>
+    <tr>
+        <td>אבולוציה</td>
+        <td>Evolution</td>
+        <td>מדע</td>
+        <td>לוץ</td>
+    </tr>
+    <tr>
+        <td>גרעין</td>
+        <td>Nucleus</td>
+        <td>מדע</td>
+        <td>רעה</td>
+    </tr>
+    <tr>
+        <td>מגנטיות</td>
+        <td>Magnetism</td>
+        <td>מדע</td>
+        <td>גנט</td>
+    </tr>
+    <tr>
+        <td>אלקטרון</td>
+        <td>Electron</td>
+        <td>מדע</td>
+        <td>טרן</td>
+    </tr>
+    <tr>
+        <td>פרוטון</td>
+        <td>Proton</td>
+        <td>מדע</td>
+        <td>טרן</td>
+    </tr>
+    <tr>
+        <td>נויטרון</td>
+        <td>Neutron</td>
+        <td>מדע</td>
+        <td>טרן</td>
+    </tr>
+    <tr>
+        <td>כוח</td>
+        <td>Force</td>
+        <td>מדע</td>
+        <td>כוח</td>
+    </tr>
+    <tr>
+        <td>תנועה</td>
+        <td>Motion</td>
+        <td>מדע</td>
+        <td>נוע</td>
+    </tr>
+    <tr>
+        <td>מסה</td>
+        <td>Mass</td>
+        <td>מדע</td>
+        <td>מסס</td>
+    </tr>
+    <tr>
+        <td>משקל</td>
+        <td>Weight</td>
+        <td>מדע</td>
+        <td>קלל</td>
+    </tr>
+    <tr>
+        <td>טמפרטורה</td>
+        <td>Temperature</td>
+        <td>מדע</td>
+        <td>פרט</td>
+    </tr>
+    <tr>
+        <td>לחץ</td>
+        <td>Pressure</td>
+        <td>מדע</td>
+        <td>לחץ</td>
+    </tr>
+    <tr>
+        <td>זרם</td>
+        <td>Current</td>
+        <td>מדע</td>
+        <td>זרם</td>
+    </tr>
+    <tr>
+        <td>מוליכות</td>
+        <td>Conductivity</td>
+        <td>מדע</td>
+        <td>לכה</td>
+    </tr>
+    <tr>
+        <td>חומציות</td>
+        <td>Acidity</td>
+        <td>מדע</td>
+        <td>מצה</td>
+    </tr>
+    <tr>
+        <td>בסיסיות</td>
+        <td>Basicity</td>
+        <td>מדע</td>
+        <td>סיס</td>
+    </tr>
+    <tr>
+        <td>גרביטציה</td>
+        <td>Gravity</td>
+        <td>מדע</td>
+        <td>גבה</td>
+    </tr>
+    <tr>
+        <td>אינרציה</td>
+        <td>Inertia</td>
+        <td>מדע</td>
+        <td>רצה</td>
+    </tr>
+    <tr>
+        <td>תאוצה</td>
+        <td>Acceleration</td>
+        <td>מדע</td>
+        <td>אץ</td>
+    </tr>
+    <tr>
+        <td>מהירות</td>
+        <td>Velocity</td>
+        <td>מדע</td>
+        <td>הרה</td>
+    </tr>
+    <tr>
+        <td>אנטי-חומר</td>
+        <td>Anti-matter</td>
+        <td>מדע</td>
+        <td>חמר</td>
+    </tr>
+    <tr>
+        <td>קרינה</td>
+        <td>Radiation</td>
+        <td>מדע</td>
+        <td>קרן</td>
+    </tr>
+    <tr>
+        <td>פרוטופלסמה</td>
+        <td>Protoplasm</td>
+        <td>מדע</td>
+        <td>פלס</td>
+    </tr>
+    <tr>
+        <td>כרומוזום</td>
+        <td>Chromosome</td>
+        <td>מדע</td>
+        <td>זום</td>
+    </tr>
+    <tr>
+        <td>דנ"א</td>
+        <td>DNA</td>
+        <td>מדע</td>
+        <td>דנא</td>
+    </tr>
+    <tr>
+        <td>אקספרימנט</td>
+        <td>Experiment</td>
+        <td>מדע</td>
+        <td>פרט</td>
+    </tr>
+    <tr>
+        <td>היפותזה</td>
+        <td>Hypothesis</td>
+        <td>מדע</td>
+        <td>תזה</td>
+    </tr>
+    <tr>
+        <td>תיאוריה</td>
+        <td>Theory</td>
+        <td>מדע</td>
+        <td>ירה</td>
+    </tr>
+    <tr>
+        <td>תצפית</td>
+        <td>Observation</td>
+        <td>מדע</td>
+        <td>צפה</td>
+    </tr>
+    <tr>
+        <td>מדידה</td>
+        <td>Measurement</td>
+        <td>מדע</td>
+        <td>דדה</td>
+    </tr>
+    <tr>
+        <td>סימטריה</td>
+        <td>Symmetry</td>
+        <td>מדע</td>
+        <td>מטר</td>
+    </tr>
+    <tr>
+        <td>מבנה</td>
+        <td>Structure</td>
+        <td>מדע</td>
+        <td>בנה</td>
+    </tr>
+    <tr>
+        <td>תהליך</td>
+        <td>Process</td>
+        <td>מדע</td>
+        <td>לך</td>
+    </tr>
+    <tr>
+        <td>רפואה</td>
+        <td>Medicine</td>
+        <td>רפואה</td>
+        <td>רפא</td>
+    </tr>
+    <tr>
+        <td>ניתוח</td>
+        <td>Surgery</td>
+        <td>רפואה</td>
+        <td>נתח</td>
+    </tr>
+    <tr>
+        <td>רופא</td>
+        <td>Doctor</td>
+        <td>רפואה</td>
+        <td>רפא</td>
+    </tr>
+    <tr>
+        <td>חולה</td>
+        <td>Patient</td>
+        <td>רפואה</td>
+        <td>חלל</td>
+    </tr>
+    <tr>
+        <td>תרופה</td>
+        <td>Medicine</td>
+        <td>רפואה</td>
+        <td>רפא</td>
+    </tr>
+    <tr>
+        <td>אחות</td>
+        <td>Nurse</td>
+        <td>רפואה</td>
+        <td>אח</td>
+    </tr>
+    <tr>
+        <td>מרפאה</td>
+        <td>Clinic</td>
+        <td>רפואה</td>
+        <td>רפא</td>
+    </tr>
+    <tr>
+        <td>בדיקה</td>
+        <td>Examination</td>
+        <td>רפואה</td>
+        <td>בדק</td>
+    </tr>
+    <tr>
+        <td>מחלה</td>
+        <td>Disease</td>
+        <td>רפואה</td>
+        <td>חלה</td>
+    </tr>
+    <tr>
+        <td>אמבולנס</td>
+        <td>Ambulance</td>
+        <td>רפואה</td>
+        <td>אמבולנס</td>
+    </tr>
+    <tr>
+        <td>בית חולים</td>
+        <td>Hospital</td>
+        <td>רפואה</td>
+        <td>חול</td>
+    </tr>
+    <tr>
+        <td>מרשם</td>
+        <td>Prescription</td>
+        <td>רפואה</td>
+        <td>רשם</td>
+    </tr>
+    <tr>
+        <td>חיסון</td>
+        <td>Vaccine</td>
+        <td>רפואה</td>
+        <td>חסן</td>
+    </tr>
+    <tr>
+        <td>טיפול</td>
+        <td>Treatment</td>
+        <td>רפואה</td>
+        <td>טפל</td>
+    </tr>
+    <tr>
+        <td>כאב</td>
+        <td>Pain</td>
+        <td>רפואה</td>
+        <td>כאוב</td>
+    </tr>
+    <tr>
+        <td>שיקום</td>
+        <td>Rehabilitation</td>
+        <td>רפואה</td>
+        <td>שקם</td>
+    </tr>
+    <tr>
+        <td>רופא שיניים</td>
+        <td>Dentist</td>
+        <td>רפואה</td>
+        <td>שן</td>
+    </tr>
+    <tr>
+        <td>רופא נשים</td>
+        <td>Gynecologist</td>
+        <td>רפואה</td>
+        <td>נש</td>
+    </tr>
+    <tr>
+        <td>חדר מיון</td>
+        <td>Emergency Room</td>
+        <td>רפואה</td>
+        <td>מיו</td>
+    </tr>
+    <tr>
+        <td>מנתח</td>
+        <td>Surgeon</td>
+        <td>רפואה</td>
+        <td>נתח</td>
+    </tr>
+    <tr>
+        <td>פרמדיק</td>
+        <td>Paramedic</td>
+        <td>רפואה</td>
+        <td>פרמ</td>
+    </tr>
+    <tr>
+        <td>מומחה</td>
+        <td>Specialist</td>
+        <td>רפואה</td>
+        <td>מומח</td>
+    </tr>
+    <tr>
+        <td>פיזיותרפיסט</td>
+        <td>Physiotherapist</td>
+        <td>רפואה</td>
+        <td>פיזיו</td>
+    </tr>
+    <tr>
+        <td>פסיכיאטר</td>
+        <td>Psychiatrist</td>
+        <td>רפואה</td>
+        <td>פסיכ</td>
+    </tr>
+    <tr>
+        <td>קרדיולוג</td>
+        <td>Cardiologist</td>
+        <td>רפואה</td>
+        <td>קרדי</td>
+    </tr>
+    <tr>
+        <td>אונקולוג</td>
+        <td>Oncologist</td>
+        <td>רפואה</td>
+        <td>אונק</td>
+    </tr>
+    <tr>
+        <td>גסטרולוג</td>
+        <td>Gastroenterologist</td>
+        <td>רפואה</td>
+        <td>גסטרו</td>
+    </tr>
+    <tr>
+        <td>דיאגנוסטיקה</td>
+        <td>Diagnostics</td>
+        <td>רפואה</td>
+        <td>דיאגנוס</td>
+    </tr>
+    <tr>
+        <td>ניתוח פלסטי</td>
+        <td>Plastic Surgery</td>
+        <td>רפואה</td>
+        <td>פלסטי</td>
+    </tr>
+    <tr>
+        <td>בדיקות דם</td>
+        <td>Blood Tests</td>
+        <td>רפואה</td>
+        <td>דם</td>
+    </tr>
+    <tr>
+        <td>אנטיביוטיקה</td>
+        <td>Antibiotics</td>
+        <td>רפואה</td>
+        <td>אנטיביוט</td>
+    </tr>
+    <tr>
+        <td>רדיולוגיה</td>
+        <td>Radiology</td>
+        <td>רפואה</td>
+        <td>רדיו</td>
+    </tr>
+    <tr>
+        <td>נוירולוגיה</td>
+        <td>Neurology</td>
+        <td>רפואה</td>
+        <td>נוירו</td>
+    </tr>
+    <tr>
+        <td>אורולוגיה</td>
+        <td>Urology</td>
+        <td>רפואה</td>
+        <td>אורו</td>
+    </tr>
+    <tr>
+        <td>אנדוקרינולוגיה</td>
+        <td>Endocrinology</td>
+        <td>רפואה</td>
+        <td>אנדוקרי</td>
+    </tr>
+    <tr>
+        <td>אלרגיה</td>
+        <td>Allergy</td>
+        <td>רפואה</td>
+        <td>אלרגי</td>
+    </tr>
+    <tr>
+        <td>פתולוגיה</td>
+        <td>Pathology</td>
+        <td>רפואה</td>
+        <td>פתולו</td>
+    </tr>
+    <tr>
+        <td>כירורגיה</td>
+        <td>Surgery</td>
+        <td>רפואה</td>
+        <td>כירה</td>
+    </tr>
+    <tr>
+        <td>קוסמטיקה רפואית</td>
+        <td>Medical Cosmetics</td>
+        <td>רפואה</td>
+        <td>קוסמט</td>
+    </tr>
+    <tr>
+        <td>בדיקת דנ"א</td>
+        <td>DNA Test</td>
+        <td>רפואה</td>
+        <td>דנ"א</td>
+    </tr>
+    <tr>
+        <td>MRI</td>
+        <td>MRI</td>
+        <td>רפואה</td>
+        <td>MRI</td>
+    </tr>
+    <tr>
+        <td>CT</td>
+        <td>CT</td>
+        <td>רפואה</td>
+        <td>CT</td>
+    </tr>
+    <tr>
+        <td>US</td>
+        <td>Ultrasound</td>
+        <td>רפואה</td>
+        <td>US</td>
+    </tr>
+    <tr>
+        <td>רפואה פנימית</td>
+        <td>Internal Medicine</td>
+        <td>רפואה</td>
+        <td>פנים</td>
+    </tr>
+    <tr>
+        <td>רפואה דחופה</td>
+        <td>Emergency Medicine</td>
+        <td>רפואה</td>
+        <td>דחוף</td>
+    </tr>
+    <tr>
+        <td>בריאות הציבור</td>
+        <td>Public Health</td>
+        <td>רפואה</td>
+        <td>ציבור</td>
+    </tr>
+    <tr>
+        <td>הרדמה</td>
+        <td>Anesthesia</td>
+        <td>רפואה</td>
+        <td>רדמ</td>
+    </tr>
+    <tr>
+        <td>פיזיותרפיה</td>
+        <td>Physiotherapy</td>
+        <td>רפואה</td>
+        <td>פיזיו</td>
+    </tr>
+    <tr>
+        <td>רנטגן</td>
+        <td>X-ray</td>
+        <td>רפואה</td>
+        <td>רנט</td>
+    </tr>
+    <tr>
+        <td>תזונה</td>
+        <td>Nutrition</td>
+        <td>רפואה</td>
+        <td>זונ</td>
+    </tr>
+    <tr>
+        <td>מרפא</td>
+        <td>Healer</td>
+        <td>רפואה</td>
+        <td>רפא</td>
+    </tr>
+    <tr>
+        <td>תרמילולוגיה</td>
+        <td>Hematology</td>
+        <td>רפואה</td>
+        <td>תרמיל</td>
+    </tr>
+    <tr>
+        <td>רפלקסולוגיה</td>
+        <td>Reflexology</td>
+        <td>רפואה</td>
+        <td>רפלקס</td>
+    </tr>
+    <tr>
+        <td>אורטופדיה</td>
+        <td>Orthopedics</td>
+        <td>רפואה</td>
+        <td>אורטו</td>
+    </tr>
+    <tr>
+        <td>נוירוכירורגיה</td>
+        <td>Neurosurgery</td>
+        <td>רפואה</td>
+        <td>נוירו</td>
+    </tr>
+    <tr>
+        <td>גריאטריה</td>
+        <td>Geriatrics</td>
+        <td>רפואה</td>
+        <td>גריא</td>
+    </tr>
+    <tr>
+        <td>אוקולופלסטיקה</td>
+        <td>Oculoplastics</td>
+        <td>רפואה</td>
+        <td>אוקולו</td>
+    </tr>
+    <tr>
+        <td>הפלה</td>
+        <td>Abortion</td>
+        <td>רפואה</td>
+        <td>פלה</td>
+    </tr>
+    <tr>
+        <td>קרדיולוגיה</td>
+        <td>Cardiology</td>
+        <td>רפואה</td>
+        <td>קרדי</td>
+    </tr>
+    <tr>
+        <td>פסיכולוגיה</td>
+        <td>Psychology</td>
+        <td>רפואה</td>
+        <td>פסיכו</td>
+    </tr>
+    <tr>
+        <td>כירורגיה פלסטית</td>
+        <td>Plastic Surgery</td>
+        <td>רפואה</td>
+        <td>פלסט</td>
+    </tr>
+    <tr>
+        <td>פתולוגיה</td>
+        <td>Pathology</td>
+        <td>רפואה</td>
+        <td>פתולו</td>
+    </tr>
+    <tr>
+        <td>רנטגנולוגיה</td>
+        <td>Radiology</td>
+        <td>רפואה</td>
+        <td>רדיו</td>
+    </tr>
+    <tr>
+        <td>טרטולוגיה</td>
+        <td>Teratology</td>
+        <td>רפואה</td>
+        <td>טרט</td>
+    </tr>
+    <tr>
+        <td>רפואה משלימה</td>
+        <td>Alternative Medicine</td>
+        <td>רפואה</td>
+        <td>משל</td>
+    </tr>
+    <tr>
+        <td>רפואה מודרנית</td>
+        <td>Modern Medicine</td>
+        <td>רפואה</td>
+        <td>מודר</td>
+    </tr>
+    <tr>
+        <td>מחקר רפואי</td>
+        <td>Medical Research</td>
+        <td>רפואה</td>
+        <td>מחקר</td>
+    </tr>
+    <tr>
+        <td>תאונות</td>
+        <td>Accidents</td>
+        <td>רפואה</td>
+        <td>תאונ</td>
+    </tr>
+    <tr>
+        <td>ניסוי קליני</td>
+        <td>Clinical Trial</td>
+        <td>רפואה</td>
+        <td>ניסוי</td>
+    </tr>
+    <tr>
+        <td>רפואת חירום</td>
+        <td>Emergency Medicine</td>
+        <td>רפואה</td>
+        <td>חירום</td>
+    </tr>
+    <tr>
+        <td>רפואת ספורט</td>
+        <td>Sports Medicine</td>
+        <td>רפואה</td>
+        <td>ספורט</td>
+    </tr>
+    <tr>
+        <td>רפואה פנימית</td>
+        <td>Internal Medicine</td>
+        <td>רפואה</td>
+        <td>פנים</td>
+    </tr>
+    <tr>
+        <td>תראפיה</td>
+        <td>Therapy</td>
+        <td>רפואה</td>
+        <td>תרא</td>
+    </tr>
+    <tr>
+        <td>דימות</td>
+        <td>Imaging</td>
+        <td>רפואה</td>
+        <td>דימ</td>
+    </tr>
+    <tr>
+        <td>אנדוסקופיה</td>
+        <td>Endoscopy</td>
+        <td>רפואה</td>
+        <td>אנדו</td>
+    </tr>
+    <tr>
+        <td>גניקולוגיה</td>
+        <td>Gynecology</td>
+        <td>רפואה</td>
+        <td>גניק</td>
+    </tr>
+    <tr>
+        <td>פרמקולוגיה</td>
+        <td>Pharmacology</td>
+        <td>רפואה</td>
+        <td>פרמקו</td>
+    </tr>
+    <tr>
+        <td>מיילדות</td>
+        <td>Obstetrics</td>
+        <td>רפואה</td>
+        <td>יילד</td>
+    </tr>
+    <tr>
+        <td>בריאות הנפש</td>
+        <td>Mental Health</td>
+        <td>רפואה</td>
+        <td>נפש</td>
+    </tr>
+    <tr>
+        <td>כאב כרוני</td>
+        <td>Chronic Pain</td>
+        <td>רפואה</td>
+        <td>כאב</td>
+    </tr>
+    <tr>
+        <td>פסיכותרפיה</td>
+        <td>Psychotherapy</td>
+        <td>רפואה</td>
+        <td>פסיכו</td>
+    </tr>
+    <tr>
+        <td>רפואה גריאטרית</td>
+        <td>Geriatric Medicine</td>
+        <td>רפואה</td>
+        <td>גריא</td>
+    </tr>
+    <tr>
+        <td>רפואה טרופית</td>
+        <td>Tropical Medicine</td>
+        <td>רפואה</td>
+        <td>טרופי</td>
+    </tr>
+    <tr>
+        <td>רפואת עיניים</td>
+        <td>Ophthalmology</td>
+        <td>רפואה</td>
+        <td>עין</td>
+    </tr>
+    <tr>
+        <td>אופטומטריה</td>
+        <td>Optometry</td>
+        <td>רפואה</td>
+        <td>אופט</td>
+    </tr>
+    <tr>
+        <td>בדיקות מעבדה</td>
+        <td>Lab Tests</td>
+        <td>רפואה</td>
+        <td>מעבדה</td>
+    </tr>
+    <tr>
+        <td>בדיקת הריון</td>
+        <td>Pregnancy Test</td>
+        <td>רפואה</td>
+        <td>הריון</td>
+    </tr>
+    <tr>
+        <td>ביוכימיה</td>
+        <td>Biochemistry</td>
+        <td>רפואה</td>
+        <td>כימיה</td>
+    </tr>
+    <tr>
+        <td>גסטרו</td>
+        <td>Gastroenterology</td>
+        <td>רפואה</td>
+        <td>גסטרו</td>
+    </tr>
+    <tr>
+        <td>אפידמיולוגיה</td>
+        <td>Epidemiology</td>
+        <td>רפואה</td>
+        <td>אפידמיו</td>
+    </tr>
+    <tr>
+        <td>בדיקת רנטגן</td>
+        <td>X-ray Test</td>
+        <td>רפואה</td>
+        <td>רנט</td>
+    </tr>
+    <tr>
+        <td>נפרולוגיה</td>
+        <td>Nephrology</td>
+        <td>רפואה</td>
+        <td>נפרו</td>
+    </tr>
+    <tr>
+        <td>נוירולוגיה</td>
+        <td>Neurology</td>
+        <td>רפואה</td>
+        <td>נוירו</td>
+    </tr>
+    <tr>
+        <td>הורמונים</td>
+        <td>Hormones</td>
+        <td>רפואה</td>
+        <td>הורמונ</td>
+    </tr>
+    <tr>
+        <td>וטרינריה</td>
+        <td>Veterinary Medicine</td>
+        <td>רפואה</td>
+        <td>וטר</td>
+    </tr>
+    <tr>
+        <td>מומחה לריאות</td>
+        <td>Pulmonologist</td>
+        <td>רפואה</td>
+        <td>ריאה</td>
+    </tr>
+    <tr>
+        <td>מעבדת רנטגן</td>
+        <td>Radiology Lab</td>
+        <td>רפואה</td>
+        <td>רנט</td>
+    </tr>
+    <tr>
+        <td>מרשם רופא</td>
+        <td>Doctor's Prescription</td>
+        <td>רפואה</td>
+        <td>רפא</td>
+    </tr>
+    <tr>
+        <td>מימון רפואי</td>
+        <td>Medical Funding</td>
+        <td>רפואה</td>
+        <td>מימון</td>
+    </tr>
+    <tr>
+        <td>מימון בריאות</td>
+        <td>Health Funding</td>
+        <td>רפואה</td>
+        <td>בריא</td>
+    </tr>
+    <tr>
+        <td>רופא חירום</td>
+        <td>Emergency Doctor</td>
+        <td>רפואה</td>
+        <td>חירום</td>
+    </tr>
+    <tr>
+        <td>לימודי רפואה</td>
+        <td>Medical Studies</td>
+        <td>רפואה</td>
+        <td>לימוד</td>
+    </tr>
+    <tr>
+        <td>אנטיביוטיקה</td>
+        <td>Antibiotics</td>
+        <td>רפואה</td>
+        <td>אנטיביו</td>
+    </tr>
+    <tr>
+        <td>בדיקת שתן</td>
+        <td>Urine Test</td>
+        <td>רפואה</td>
+        <td>שתן</td>
+    </tr>
+    <tr>
+        <td>ביופסיה</td>
+        <td>Biopsy</td>
+        <td>רפואה</td>
+        <td>ביופס</td>
+    </tr>
+    <tr>
+        <td>חיסון שפעת</td>
+        <td>Flu Vaccine</td>
+        <td>רפואה</td>
+        <td>--</td>
+    <tr>
+        <td>בריאות הציבור</td>
+        <td>Public Health</td>
+        <td>רפואה</td>
+        <td>ציבור</td>
+    </tr>
+    <tr>
+        <td>בדיקת רגליים</td>
+        <td>Leg Examination</td>
+        <td>רפואה</td>
+        <td>רגל</td>
+    </tr>
+    <tr>
+        <td>בדיקת עיניים</td>
+        <td>Eye Examination</td>
+        <td>רפואה</td>
+        <td>עין</td>
+    </tr>
+    <tr>
+        <td>בדיקה כללית</td>
+        <td>General Examination</td>
+        <td>רפואה</td>
+        <td>כללי</td>
+    </tr>
+    <tr>
+        <td>היסטוריה רפואית</td>
+        <td>Medical History</td>
+        <td>רפואה</td>
+        <td>היסטור</td>
+    </tr>
+    <tr>
+        <td>מדע הרפואה</td>
+        <td>Medical Science</td>
+        <td>רפואה</td>
+        <td>מדע</td>
+    </tr>
+    <tr>
+        <td>תרופות מנע</td>
+        <td>Preventive Medicine</td>
+        <td>רפואה</td>
+        <td>מנע</td>
+    </tr>
+    <tr>
+        <td>הקרנות</td>
+        <td>Radiation</td>
+        <td>רפואה</td>
+        <td>הקר</td>
+    </tr>
+    <tr>
+        <td>נויטרופילים</td>
+        <td>Neutrophils</td>
+        <td>רפואה</td>
+        <td>נויטרו</td>
+    </tr>
+    <tr>
+        <td>מסיבת רופאים</td>
+        <td>Doctors' Party</td>
+        <td>רפואה</td>
+        <td>מסיב</td>
+    </tr>
+    <tr>
+        <td>חוקר רפואי</td>
+        <td>Medical Investigator</td>
+        <td>רפואה</td>
+        <td>חקר</td>
+    </tr>
+    <tr>
+        <td>בדיקת עור</td>
+        <td>Skin Test</td>
+        <td>רפואה</td>
+        <td>עור</td>
+    </tr>
+    <tr>
+        <td>הורמון גדילה</td>
+        <td>Growth Hormone</td>
+        <td>רפואה</td>
+        <td>גדילה</td>
+    </tr>
+    <tr>
+        <td>רפואה אישית</td>
+        <td>Personal Medicine</td>
+        <td>רפואה</td>
+        <td>אישי</td>
+    </tr>
+    <tr>
+        <td>אורולוגיה</td>
+        <td>Urology</td>
+        <td>רפואה</td>
+        <td>אורו</td>
+    </tr>
+    <tr>
+        <td>פתולוגיה פורנסית</td>
+        <td>Forensic Pathology</td>
+        <td>רפואה</td>
+        <td>פתולו</td>
+    </tr>
+    <tr>
+        <td>פרקטיקה רפואית</td>
+        <td>Medical Practice</td>
+        <td>רפואה</td>
+        <td>פרקטיק</td>
+    </tr>
+    <tr>
+        <td>אופקציה</td>
+        <td>Optician</td>
+        <td>רפואה</td>
+        <td>אופק</td>
+    </tr>
+    <tr>
+        <td>שיקום רפואי</td>
+        <td>Medical Rehabilitation</td>
+        <td>רפואה</td>
+        <td>שקם</td>
+    </tr>
+    <tr>
+        <td>קדם רפואה</td>
+        <td>Pre-Medicine</td>
+        <td>רפואה</td>
+        <td>קדם</td>
+    </tr>
+    <tr>
+        <td>ניסיון רפואי</td>
+        <td>Medical Experience</td>
+        <td>רפואה</td>
+        <td>ניסיון</td>
+    </tr>
+    <tr>
+        <td>מנתח פלסטי</td>
+        <td>Plastic Surgeon</td>
+        <td>רפואה</td>
+        <td>פלסט</td>
+    </tr>
+    <tr>
+        <td>מחקר קליני</td>
+        <td>Clinical Research</td>
+        <td>רפואה</td>
+        <td>מחקר</td>
+    </tr>
+    <tr>
+        <td>מרפאה פרטית</td>
+        <td>Private Clinic</td>
+        <td>רפואה</td>
+        <td>פרט</td>
+    </tr>
+    <tr>
+        <td>דוקטורט רפואי</td>
+        <td>Medical Doctorate</td>
+        <td>רפואה</td>
+        <td>דוקטור</td>
+    </tr>
+    <tr>
+        <td>מקצועות רפואה</td>
+        <td>Medical Professions</td>
+        <td>רפואה</td>
+        <td>מקצוע</td>
+    </tr>
+    <tr>
+        <td>מועצת רופאים</td>
+        <td>Board of Doctors</td>
+        <td>רפואה</td>
+        <td>מועצ</td>
+    </tr>
+    <tr>
+        <td>רפואה מגדרית</td>
+        <td>Gender Medicine</td>
+        <td>רפואה</td>
+        <td>מגדר</td>
+    </tr>
+    <tr>
+        <td>סוכרת</td>
+        <td>Diabetes</td>
+        <td>מחלות</td>
+        <td>סכר</td>
+    </tr>
+    <tr>
+        <td>שפעת</td>
+        <td>Influenza</td>
+        <td>מחלות</td>
+        <td>שפעת</td>
+    </tr>
+    <tr>
+        <td>דלקת ריאות</td>
+        <td>Pneumonia</td>
+        <td>מחלות</td>
+        <td>ריאה</td>
+    </tr>
+    <tr>
+        <td>סרטן</td>
+        <td>Cancer</td>
+        <td>מחלות</td>
+        <td>סרטן</td>
+    </tr>
+    <tr>
+        <td>איידס</td>
+        <td>AIDS</td>
+        <td>מחלות</td>
+        <td>איידס</td>
+    </tr>
+    <tr>
+        <td>אלצהיימר</td>
+        <td>Alzheimer's</td>
+        <td>מחלות</td>
+        <td>אלצה</td>
+    </tr>
+    <tr>
+        <td>מחלות לב</td>
+        <td>Heart Diseases</td>
+        <td>מחלות</td>
+        <td>לב</td>
+    </tr>
+    <tr>
+        <td>שחפת</td>
+        <td>Tuberculosis</td>
+        <td>מחלות</td>
+        <td>שחף</td>
+    </tr>
+    <tr>
+        <td>הפטיטיס</td>
+        <td>Hepatitis</td>
+        <td>מחלות</td>
+        <td>הפט</td>
+    </tr>
+    <tr>
+        <td>אבעבועות רוח</td>
+        <td>Chickenpox</td>
+        <td>מחלות</td>
+        <td>אבעבועות</td>
+    </tr>
+    <tr>
+        <td>ברונכיטיס</td>
+        <td>Bronchitis</td>
+        <td>מחלות</td>
+        <td>ברונכ</td>
+    </tr>
+    <tr>
+        <td>פרקינסון</td>
+        <td>Parkinson's</td>
+        <td>מחלות</td>
+        <td>פרק</td>
+    </tr>
+    <tr>
+        <td>ציטומגלובירוס</td>
+        <td>Cytomegalovirus</td>
+        <td>מחלות</td>
+        <td>ציטו</td>
+    </tr>
+    <tr>
+        <td>אוטיזם</td>
+        <td>Autism</td>
+        <td>מחלות</td>
+        <td>אוטי</td>
+    </tr>
+    <tr>
+        <td>דלקת קרום המוח</td>
+        <td>Meningitis</td>
+        <td>מחלות</td>
+        <td>קרום</td>
+    </tr>
+    <tr>
+        <td>אסתמה</td>
+        <td>Asthma</td>
+        <td>מחלות</td>
+        <td>אסת</td>
+    </tr>
+    <tr>
+        <td>דלקת מפרקים</td>
+        <td>Arthritis</td>
+        <td>מחלות</td>
+        <td>פרק</td>
+    </tr>
+    <tr>
+        <td>כולרה</td>
+        <td>Cholera</td>
+        <td>מחלות</td>
+        <td>כולר</td>
+    </tr>
+    <tr>
+        <td>זיקה</td>
+        <td>Zika</td>
+        <td>מחלות</td>
+        <td>זיק</td>
+    </tr>
+    <tr>
+        <td>אבולה</td>
+        <td>Ebola</td>
+        <td>מחלות</td>
+        <td>אבול</td>
+    </tr>
+    <tr>
+        <td>מיגרנה</td>
+        <td>Migraine</td>
+        <td>מחלות</td>
+        <td>מיגר</td>
+    </tr>
+    <tr>
+        <td>מחלת קרוהן</td>
+        <td>Crohn's Disease</td>
+        <td>מחלות</td>
+        <td>קרוה</td>
+    </tr>
+    <tr>
+        <td>דלקת שקדים</td>
+        <td>Tonsillitis</td>
+        <td>מחלות</td>
+        <td>שקד</td>
+    </tr>
+    <tr>
+        <td>דלקת גרון</td>
+        <td>Pharyngitis</td>
+        <td>מחלות</td>
+        <td>גרון</td>
+    </tr>
+    <tr>
+        <td>קדחת השחת</td>
+        <td>Hay Fever</td>
+        <td>מחלות</td>
+        <td>קדח</td>
+    </tr>
+    <tr>
+        <td>צליאק</td>
+        <td>Celiac Disease</td>
+        <td>מחלות</td>
+        <td>צליא</td>
+    </tr>
+    <tr>
+        <td>קדחת הים התיכון</td>
+        <td>Mediterranean Fever</td>
+        <td>מחלות</td>
+        <td>קדח</td>
+    </tr>
+    <tr>
+        <td>דלקת כבד</td>
+        <td>Hepatitis</td>
+        <td>מחלות</td>
+        <td>כבד</td>
+    </tr>
+    <tr>
+        <td>מונונוקלאוזיס</td>
+        <td>Mononucleosis</td>
+        <td>מחלות</td>
+        <td>מונו</td>
+    </tr>
+    <tr>
+        <td>אבנים בכליות</td>
+        <td>Kidney Stones</td>
+        <td>מחלות</td>
+        <td>אבנ</td>
+    </tr>
+    <tr>
+        <td>ציסטיק פיברוזיס</td>
+        <td>Cystic Fibrosis</td>
+        <td>מחלות</td>
+        <td>ציסטי</td>
+    </tr>
+    <tr>
+        <td>נזלת אלרגית</td>
+        <td>Allergic Rhinitis</td>
+        <td>מחלות</td>
+        <td>נזלת</td>
+    </tr>
+    <tr>
+        <td>פסוריאזיס</td>
+        <td>Psoriasis</td>
+        <td>מחלות</td>
+        <td>פסור</td>
+    </tr>
+    <tr>
+        <td>כיב קיבה</td>
+        <td>Stomach Ulcer</td>
+        <td>מחלות</td>
+        <td>כיב</td>
+    </tr>
+    <tr>
+        <td>עיוורון צבעים</td>
+        <td>Color Blindness</td>
+        <td>מחלות</td>
+        <td>עיוור</td>
+    </tr>
+    <tr>
+        <td>אוסתיאופורוזיס</td>
+        <td>Osteoporosis</td>
+        <td>מחלות</td>
+        <td>אוסתי</td>
+    </tr>
+    <tr>
+        <td>חצבת</td>
+        <td>Measles</td>
+        <td>מחלות</td>
+        <td>חצבת</td>
+    </tr>
+    <tr>
+        <td>דלקת קרום הלב</td>
+        <td>Pericarditis</td>
+        <td>מחלות</td>
+        <td>קרום</td>
+    </tr>
+    <tr>
+        <td>אפתות</td>
+        <td>Apthous Stomatitis</td>
+        <td>מחלות</td>
+        <td>אפת</td>
+    </tr>
+    <tr>
+        <td>רגליים קרות</td>
+        <td>Cold Feet Syndrome</td>
+        <td>מחלות</td>
+        <td>רגל</td>
+    </tr>
+    <tr>
+        <td>המוליזה</td>
+        <td>Hemolysis</td>
+        <td>מחלות</td>
+        <td>המול</td>
+    </tr>
+    <tr>
+        <td>לוקמיה</td>
+        <td>Leukemia</td>
+        <td>מחלות</td>
+        <td>לוק</td>
+    </tr>
+    <tr>
+        <td>בולמיה</td>
+        <td>Bulimia</td>
+        <td>מחלות</td>
+        <td>בולמ</td>
+    </tr>
+    <tr>
+        <td>אפילפסיה</td>
+        <td>Epilepsy</td>
+        <td>מחלות</td>
+        <td>אפיל</td>
+    </tr>
+    <tr>
+        <td>פריחה</td>
+        <td>Rash</td>
+        <td>מחלות</td>
+        <td>פרח</td>
+    </tr>
+    <tr>
+        <td>צליחה</td>
+        <td>Diphtheria</td>
+        <td>מחלות</td>
+        <td>צלח</td>
+    </tr>
+    <tr>
+        <td>אוסטאוארתריטיס</td>
+        <td>Osteoarthritis</td>
+        <td>מחלות</td>
+        <td>אוסטאו</td>
+    </tr>
+    <tr>
+        <td>נוירופטיה</td>
+        <td>Neuropathy</td>
+        <td>מחלות</td>
+        <td>נוירו</td>
+    </tr>
+    <tr>
+        <td>אנמיה</td>
+        <td>Anemia</td>
+        <td>מחלות</td>
+        <td>אנמי</td>
+    </tr>
+    <tr>
+        <td>קדחת מלטה</td>
+        <td>Malta Fever</td>
+        <td>מחלות</td>
+        <td>קדח</td>
+    </tr>
+    <tr>
+        <td>תסמונת דאון</td>
+        <td>Down Syndrome</td>
+        <td>מחלות</td>
+        <td>דאון</td>
+    </tr>
+    <tr>
+        <td>אצטמינופן</td>
+        <td>Acetaminophen</td>
+        <td>תרופות</td>
+        <td>אצט</td>
+    </tr>
+    <tr>
+        <td>איבופרופן</td>
+        <td>Ibuprofen</td>
+        <td>תרופות</td>
+        <td>איבו</td>
+    </tr>
+    <tr>
+        <td>אמוקסיצילין</td>
+        <td>Amoxicillin</td>
+        <td>תרופות</td>
+        <td>אמוקסי</td>
+    </tr>
+    <tr>
+        <td>אזיתרומיצין</td>
+        <td>Azithromycin</td>
+        <td>תרופות</td>
+        <td>אזיתרו</td>
+    </tr>
+    <tr>
+        <td>ליזינופריל</td>
+        <td>Lisinopril</td>
+        <td>תרופות</td>
+        <td>ליזינו</td>
+    </tr>
+    <tr>
+        <td>לורסטין</td>
+        <td>Lorazepam</td>
+        <td>תרופות</td>
+        <td>לורה</td>
+    </tr>
+    <tr>
+        <td>מורפין</td>
+        <td>Morphine</td>
+        <td>תרופות</td>
+        <td>מורפ</td>
+    </tr>
+    <tr>
+        <td>מטרונידזול</td>
+        <td>Metronidazole</td>
+        <td>תרופות</td>
+        <td>מטרו</td>
+    </tr>
+    <tr>
+        <td>סימבסטטין</td>
+        <td>Simvastatin</td>
+        <td>תרופות</td>
+        <td>סימב</td>
+    </tr>
+    <tr>
+        <td>אומפרזול</td>
+        <td>Omeprazole</td>
+        <td>תרופות</td>
+        <td>אומפ</td>
+    </tr>
+    <tr>
+        <td>פרדניזון</td>
+        <td>Prednisone</td>
+        <td>תרופות</td>
+        <td>פרדנ</td>
+    </tr>
+    <tr>
+        <td>פרופנולול</td>
+        <td>Propranolol</td>
+        <td>תרופות</td>
+        <td>פרופ</td>
+    </tr>
+    <tr>
+        <td>כלורפרומזין</td>
+        <td>Chlorpromazine</td>
+        <td>תרופות</td>
+        <td>כלור</td>
+    </tr>
+    <tr>
+        <td>ריספרידון</td>
+        <td>Risperidone</td>
+        <td>תרופות</td>
+        <td>ריספר</td>
+    </tr>
+    <tr>
+        <td>רניטידין</td>
+        <td>Ranitidine</td>
+        <td>תרופות</td>
+        <td>רניט</td>
+    </tr>
+    <tr>
+        <td>פניצילין</td>
+        <td>Penicillin</td>
+        <td>תרופות</td>
+        <td>פניצ</td>
+    </tr>
+    <tr>
+        <td>פלואוקסטין</td>
+        <td>Fluoxetine</td>
+        <td>תרופות</td>
+        <td>פלואו</td>
+    </tr>
+    <tr>
+        <td>אספירין</td>
+        <td>Aspirin</td>
+        <td>תרופות</td>
+        <td>אספיר</td>
+    </tr>
+    <tr>
+        <td>סרטלין</td>
+        <td>Sertraline</td>
+        <td>תרופות</td>
+        <td>סרט</td>
+    </tr>
+    <tr>
+        <td>קלונאזפם</td>
+        <td>Clonazepam</td>
+        <td>תרופות</td>
+        <td>קלונ</td>
+    </tr>
+    <tr>
+        <td>סולפמטוקסזול</td>
+        <td>Sulfamethoxazole</td>
+        <td>תרופות</td>
+        <td>סולפ</td>
+    </tr>
+    <tr>
+        <td>זולפידם</td>
+        <td>Zolpidem</td>
+        <td>תרופות</td>
+        <td>זולפ</td>
+    </tr>
+    <tr>
+        <td>אמטריפטילין</td>
+        <td>Amitriptyline</td>
+        <td>תרופות</td>
+        <td>אמטרי</td>
+    </tr>
+    <tr>
+        <td>קלוזאפין</td>
+        <td>Clozapine</td>
+        <td>תרופות</td>
+        <td>קלוז</td>
+    </tr>
+    <tr>
+        <td>אריפיפרזול</td>
+        <td>Aripiprazole</td>
+        <td>תרופות</td>
+        <td>אריפ</td>
+    </tr>
+    <tr>
+        <td>סודיום כלוריד</td>
+        <td>Sodium Chloride</td>
+        <td>תרופות</td>
+        <td>סודיו</td>
+    </tr>
+    <tr>
+        <td>וראפמיל</td>
+        <td>Verapamil</td>
+        <td>תרופות</td>
+        <td>ורא</td>
+    </tr>
+    <tr>
+        <td>אלפראזולאם</td>
+        <td>Alprazolam</td>
+        <td>תרופות</td>
+        <td>אלפר</td>
+    </tr>
+    <tr>
+        <td>קסנקס</td>
+        <td>Xanax</td>
+        <td>תרופות</td>
+        <td>קסנ</td>
+    </tr>
+    <tr>
+        <td>ורמוקס</td>
+        <td>Vermox</td>
+        <td>תרופות</td>
+        <td>ורמ</td>
+    </tr>
+    <tr>
+        <td>אטורבסטטין</td>
+        <td>Atorvastatin</td>
+        <td>תרופות</td>
+        <td>אטור</td>
+    </tr>
+    <tr>
+        <td>דוקסיציקלין</td>
+        <td>Doxycycline</td>
+        <td>תרופות</td>
+        <td>דוקסי</td>
+    </tr>
+    <tr>
+        <td>אלדקטרון</td>
+        <td>Spironolactone</td>
+        <td>תרופות</td>
+        <td>אלד</td>
+    </tr>
+    <tr>
+        <td>אזטרול</td>
+        <td>Ezithrol</td>
+        <td>תרופות</td>
+        <td>אזט</td>
+    </tr>
+    <tr>
+        <td>הידרוקורטיזון</td>
+        <td>Hydrocortisone</td>
+        <td>תרופות</td>
+        <td>הידרו</td>
+    </tr>
+    <tr>
+        <td>פפברין</td>
+        <td>Papaverine</td>
+        <td>תרופות</td>
+        <td>פפב</td>
+    </tr>
+    <tr>
+        <td>תראפין</td>
+        <td>Thyroxine</td>
+        <td>תרופות</td>
+        <td>תראפ</td>
+    </tr>
+    <tr>
+        <td>פרגבלין</td>
+        <td>Pregabalin</td>
+        <td>תרופות</td>
+        <td>פרג</td>
+    </tr>
+    <tr>
+        <td>מתופרולול</td>
+        <td>Metoprolol</td>
+        <td>תרופות</td>
+        <td>מתופ</td>
+    </tr>
+    <tr>
+        <td>גלוקופאג</td>
+        <td>Glucophage</td>
+        <td>תרופות</td>
+        <td>גלוק</td>
+    </tr>
+    <tr>
+        <td>דיאזפם</td>
+        <td>Diazepam</td>
+        <td>תרופות</td>
+        <td>דיאז</td>
+    </tr>
+    <tr>
+        <td>לבודופה</td>
+        <td>Levodopa</td>
+        <td>תרופות</td>
+        <td>לבוד</td>
+    </tr>
+    <tr>
+        <td>מטופורמין</td>
+        <td>Metformin</td>
+        <td>תרופות</td>
+        <td>מטופ</td>
+    </tr>
+    <tr>
+        <td>הידרוקסיזין</td>
+        <td>Hydroxyzine</td>
+        <td>תרופות</td>
+        <td>הידרוקסי</td>
+    </tr>
+    <tr>
+        <td>נאלאפריל</td>
+        <td>Enalapril</td>
+        <td>תרופות</td>
+        <td>נלא</td>
+    </tr>
+    <tr>
+        <td>אמוקסיפן</td>
+        <td>Amoxicillin</td>
+        <td>תרופות</td>
+        <td>אמוקס</td>
+    </tr>
+    <tr>
+        <td>פרדניזולון</td>
+        <td>Prednisolone</td>
+        <td>תרופות</td>
+        <td>פרדניז</td>
+    </tr>
+    <tr>
+        <td>ונלפקסין</td>
+        <td>Venlafaxine</td>
+        <td>תרופות</td>
+        <td>ונלה</td>
+    </tr>
+    <tr>
+        <td>פנוברביטל</td>
+        <td>Phenobarbital</td>
+        <td>תרופות</td>
+        <td>פנוב</td>
+    </tr>
+    <tr>
+        <td>אמינופילין</td>
+        <td>Aminophylline</td>
+        <td>תרופות</td>
+        <td>אמינו</td>
+    </tr>
+    <tr>
+        <td>פניטואין</td>
+        <td>Phenytoin</td>
+        <td>תרופות</td>
+        <td>פניט</td>
+    </tr>
+    <tr>
+        <td>למוטריג'ין</td>
+        <td>Lamotrigine</td>
+        <td>תרופות</td>
+        <td>למוט</td>
+    </tr>
+    <tr>
+        <td>סטרפטומיצין</td>
+        <td>Streptomycin</td>
+        <td>תרופות</td>
+        <td>סטרפ</td>
+    </tr>
+    <tr>
+        <td>פרגבלין</td>
+        <td>Pregabalin</td>
+        <td>תרופות</td>
+        <td>פרגב</td>
+    </tr>
+    <tr>
+        <td>דומפרידון</td>
+        <td>Domperidone</td>
+        <td>תרופות</td>
+        <td>דומפ</td>
+    </tr>
+    <tr>
+        <td>פנילאזין</td>
+        <td>Phenelzine</td>
+        <td>תרופות</td>
+        <td>פניל</td>
+    </tr>
+    <tr>
+        <td>אוראלי</td>
+        <td>Oral</td>
+        <td>תרופות</td>
+        <td>אור</td>
+    </tr>
+    <tr>
+        <td>סילדנפיל</td>
+        <td>Sildenafil</td>
+        <td>תרופות</td>
+        <td>סילד</td>
+    </tr>
+    <tr>
+        <td>אמינוגליקוזידים</td>
+        <td>Aminoglycosides</td>
+        <td>תרופות</td>
+        <td>אמינ</td>
+    </tr>
+    <tr>
+        <td>נפרוקסן</td>
+        <td>Naproxen</td>
+        <td>תרופות</td>
+        <td>נפר</td>
+    </tr>
+    <tr>
+        <td>טרמדול</td>
+        <td>Tramadol</td>
+        <td>תרופות</td>
+        <td>טרם</td>
+    </tr>
+    <tr>
+        <td>דלזפין</td>
+        <td>Diltiazem</td>
+        <td>תרופות</td>
+        <td>דלז</td>
+    </tr>
+    <tr>
+        <td>סומטריפטן</td>
+        <td>Sumatriptan</td>
+        <td>תרופות</td>
+        <td>סומט</td>
+    </tr>
+    <tr>
+        <td>אלטרולט</td>
+        <td>Amitriptyline</td>
+        <td>תרופות</td>
+        <td>אלטר</td>
+    </tr>
+    <tr>
+        <td>דלוקסטין</td>
+        <td>Duloxetine</td>
+        <td>תרופות</td>
+        <td>דלו</td>
+    </tr>
+    <tr>
+        <td>לורטדין</td>
+        <td>Loratadine</td>
+        <td>תרופות</td>
+        <td>לורט</td>
+    </tr>
+    <tr>
+        <td>מאלוקס</td>
+        <td>Maalox</td>
+        <td>תרופות</td>
+        <td>מאל</td>
+    </tr>
+    <tr>
+        <td>אומטוזיל</td>
+        <td>Omeprozil</td>
+        <td>תרופות</td>
+        <td>אומט</td>
+    </tr>
+    <tr>
+        <td>ראניטיק</td>
+        <td>Ranitidine</td>
+        <td>תרופות</td>
+        <td>ראני</td>
+    </tr>
+    <tr>
+        <td>אורודנט</td>
+        <td>Oxybutynin</td>
+        <td>תרופות</td>
+        <td>אורוד</td>
+    </tr>
+    <tr>
+        <td>טריאול</td>
+        <td>Triamcinolone</td>
+        <td>תרופות</td>
+        <td>טריא</td>
+    </tr>
+    <tr>
+        <td>פרינדופיל</td>
+        <td>Perindopril</td>
+        <td>תרופות</td>
+        <td>פרין</td>
+    </tr>
+    <tr>
+        <td>פנטופראזול</td>
+        <td>Pantoprazole</td>
+        <td>תרופות</td>
+        <td>פנט</td>
+    </tr>
+    <tr>
+        <td>דיאזוקסיד</td>
+        <td>Diazoxide</td>
+        <td>תרופות</td>
+        <td>דיאז</td>
+    </tr>
+    <tr>
+        <td>אמינופילין</td>
+        <td>Aminophylline</td>
+        <td>תרופות</td>
+        <td>אמינ</td>
+    </tr>
+    <tr>
+        <td>אמוקסיפן</td>
+        <td>Amoxicillin</td>
+        <td>תרופות</td>
+        <td>אמוקס</td>
+    </tr>
+    <tr>
+        <td>פנוביאוטיקה</td>
+        <td>Phenobarbital</td>
+        <td>תרופות</td>
+        <td>פנוב</td>
+    </tr>
+    <tr>
+        <td>הפרין</td>
+        <td>Heparin</td>
+        <td>תרופות</td>
+        <td>הפר</td>
+    </tr>
+    <tr>
+        <td>אלגופירין</td>
+        <td>Algopyrin</td>
+        <td>תרופות</td>
+        <td>אלגו</td>
+    </tr>
+    <tr>
+        <td>טמבוקור</td>
+        <td>Tambocor</td>
+        <td>תרופות</td>
+        <td>טמב</td>
+    </tr>
+    <tr>
+        <td>פוסיד</td>
+        <td>Furosemide</td>
+        <td>תרופות</td>
+        <td>פוס</td>
+    </tr>
+    <tr>
+        <td>הידרו כלוריד</td>
+        <td>Hydrochloride</td>
+        <td>תרופות</td>
+        <td>הידרו</td>
+    </tr>
+    <tr>
+        <td>קרבמזפין</td>
+        <td>Carbamazepine</td>
+        <td>תרופות</td>
+        <td>קרבמז</td>
+    </tr>
+    <tr>
+        <td>איזומפרזול</td>
+        <td>Esomeprazole</td>
+        <td>תרופות</td>
+        <td>איזומ</td>
+    </tr>
+    <tr>
+        <td>דלפירידון</td>
+        <td>Delapril</td>
+        <td>תרופות</td>
+        <td>דלפ</td>
+    </tr>
+    <tr>
+        <td>אנטיביוטיק</td>
+        <td>Antibiotic</td>
+        <td>תרופות</td>
+        <td>אנטיביו</td>
+    </tr>
+    <tr>
+        <td>פרפנאזין</td>
+        <td>Perphenazine</td>
+        <td>תרופות</td>
+        <td>פרפן</td>
+    </tr>
+    <tr>
+        <td>רמיפריל</td>
+        <td>Ramipril</td>
+        <td>תרופות</td>
+        <td>רמי</td>
+    </tr>
+    <tr>
+        <td>ולסרטן</td>
+        <td>Valsartan</td>
+        <td>תרופות</td>
+        <td>ולס</td>
+    </tr>
+    <tr>
+        <td>לוטיאוקסן</td>
+        <td>Loxapine</td>
+        <td>תרופות</td>
+        <td>לוטי</td>
+    </tr>
+    <tr>
+        <td>אולנזפין</td>
+        <td>Olanzapine</td>
+        <td>תרופות</td>
+        <td>אולנ</td>
+    </tr>
+    <tr>
+        <td>גניפיברוזיל</td>
+        <td>Gemfibrozil</td>
+        <td>תרופות</td>
+        <td>גני</td>
+    </tr>
+    <tr>
+        <td>רוזיגליטזון</td>
+        <td>Rosiglitazone</td>
+        <td>תרופות</td>
+        <td>רוזי</td>
+    </tr>
+    <tr>
+        <td>קרופיברוזיל</td>
+        <td>Clofibrate</td>
+        <td>תרופות</td>
+        <td>קרו</td>
+    </tr>
+    <tr>
+        <td>אלבוטרול</td>
+        <td>Albuterol</td>
+        <td>תרופות</td>
+        <td>אלב</td>
+    </tr>
+    <tr>
+        <td>ניקטיטיקון</td>
+        <td>Nicotine</td>
+        <td>תרופות</td>
+        <td>ניק</td>
+    </tr>
+    <tr>
+        <td>פילוקרפין</td>
+        <td>Pilocarpine</td>
+        <td>תרופות</td>
+        <td>פילו</td>
+    </tr>
+    <tr>
+        <td>קורטיקוטרופין</td>
+        <td>Corticotropin</td>
+        <td>תרופות</td>
+        <td>קורטיקו</td>
+    </tr>
+    <tr>
+        <td>טריאצינולון</td>
+        <td>Triamcinolone</td>
+        <td>תרופות</td>
+        <td>טריא</td>
+    </tr>
+    <tr>
+        <td>אנפריל</td>
+        <td>Enalapril</td>
+        <td>תרופות</td>
+        <td>אנפר</td>
+    </tr>
+    <tr>
+        <td>מחשב</td>
+        <td>Computer</td>
+        <td>טכנולוגיה</td>
+        <td>חושב</td>
+    </tr>
+    <tr>
+        <td>אינטרנט</td>
+        <td>Internet</td>
+        <td>טכנולוגיה</td>
+        <td>רשת</td>
+    </tr>
+    <tr>
+        <td>תוכנה</td>
+        <td>Software</td>
+        <td>טכנולוגיה</td>
+        <td>תכנה</td>
+    </tr>
+    <tr>
+        <td>חומרה</td>
+        <td>Hardware</td>
+        <td>טכנולוגיה</td>
+        <td>חומר</td>
+    </tr>
+    <tr>
+        <td>רשת אלחוטית</td>
+        <td>Wireless Network</td>
+        <td>טכנולוגיה</td>
+        <td>רשת</td>
+    </tr>
+    <tr>
+        <td>טלפון חכם</td>
+        <td>Smartphone</td>
+        <td>טכנולוגיה</td>
+        <td>חכם</td>
+    </tr>
+    <tr>
+        <td>מציאות מדומה</td>
+        <td>Virtual Reality</td>
+        <td>טכנולוגיה</td>
+        <td>מציאות</td>
+    </tr>
+    <tr>
+        <td>ענן</td>
+        <td>Cloud</td>
+        <td>טכנולוגיה</td>
+        <td>ענן</td>
+    </tr>
+    <tr>
+        <td>בסיס נתונים</td>
+        <td>Database</td>
+        <td>טכנולוגיה</td>
+        <td>נתונ</td>
+    </tr>
+    <tr>
+        <td>בינה מלאכותית</td>
+        <td>Artificial Intelligence</td>
+        <td>טכנולוגיה</td>
+        <td>בינ</td>
+    </tr>
+    <tr>
+        <td>רובוט</td>
+        <td>Robot</td>
+        <td>טכנולוגיה</td>
+        <td>רובו</td>
+    </tr>
+    <tr>
+        <td>חומת אש</td>
+        <td>Firewall</td>
+        <td>טכנולוגיה</td>
+        <td>אש</td>
+    </tr>
+    <tr>
+        <td>דפדפן</td>
+        <td>Browser</td>
+        <td>טכנולוגיה</td>
+        <td>דפדפ</td>
+    </tr>
+    <tr>
+        <td>מחשב על</td>
+        <td>Supercomputer</td>
+        <td>טכנולוגיה</td>
+        <td>על</td>
+    </tr>
+    <tr>
+        <td>שרת</td>
+        <td>Server</td>
+        <td>טכנולוגיה</td>
+        <td>שרת</td>
+    </tr>
+    <tr>
+        <td>אפליקציה</td>
+        <td>Application</td>
+        <td>טכנולוגיה</td>
+        <td>אפליק</td>
+    </tr>
+    <tr>
+        <td>סייבר</td>
+        <td>Cyber</td>
+        <td>טכנולוגיה</td>
+        <td>סייב</td>
+    </tr>
+    <tr>
+        <td>כונן קשיח</td>
+        <td>Hard Drive</td>
+        <td>טכנולוגיה</td>
+        <td>קשיח</td>
+    </tr>
+    <tr>
+        <td>אבטחת מידע</td>
+        <td>Information Security</td>
+        <td>טכנולוגיה</td>
+        <td>אבט</td>
+    </tr>
+    <tr>
+        <td>מצלמת רשת</td>
+        <td>Webcam</td>
+        <td>טכנולוגיה</td>
+        <td>רשת</td>
+    </tr>
+    <tr>
+        <td>זיכרון</td>
+        <td>Memory</td>
+        <td>טכנולוגיה</td>
+        <td>זיכר</td>
+    </tr>
+    <tr>
+        <td>כרטיס מסך</td>
+        <td>Graphics Card</td>
+        <td>טכנולוגיה</td>
+        <td>כרטיס</td>
+    </tr>
+    <tr>
+        <td>תכנות</td>
+        <td>Programming</td>
+        <td>טכנולוגיה</td>
+        <td>תכנ</td>
+    </tr>
+    <tr>
+        <td>אבטחת סייבר</td>
+        <td>Cybersecurity</td>
+        <td>טכנולוגיה</td>
+        <td>סייב</td>
+    </tr>
+    <tr>
+        <td>מסדי נתונים</td>
+        <td>Databases</td>
+        <td>טכנולוגיה</td>
+        <td>נתונ</td>
+    </tr>
+    <tr>
+        <td>אלגוריתם</td>
+        <td>Algorithm</td>
+        <td>טכנולוגיה</td>
+        <td>אלגור</td>
+    </tr>
+    <tr>
+        <td>פרוטוקול</td>
+        <td>Protocol</td>
+        <td>טכנולוגיה</td>
+        <td>פרוטו</td>
+    </tr>
+    <tr>
+        <td>קוד פתוח</td>
+        <td>Open Source</td>
+        <td>טכנולוגיה</td>
+        <td>קוד</td>
+    </tr>
+    <tr>
+        <td>מקור סגור</td>
+        <td>Closed Source</td>
+        <td>טכנולוגיה</td>
+        <td>מקור</td>
+    </tr>
+    <tr>
+        <td>מציאות רבודה</td>
+        <td>Augmented Reality</td>
+        <td>טכנולוגיה</td>
+        <td>רבוד</td>
+    </tr>
+    <tr>
+        <td>ממשק משתמש</td>
+        <td>User Interface</td>
+        <td>טכנולוגיה</td>
+        <td>ממש</td>
+    </tr>
+    <tr>
+        <td>מערכת הפעלה</td>
+        <td>Operating System</td>
+        <td>טכנולוגיה</td>
+        <td>הפעלה</td>
+    </tr>
+    <tr>
+        <td>זיכרון RAM</td>
+        <td>RAM</td>
+        <td>טכנולוגיה</td>
+        <td>זיכרון</td>
+    </tr>
+    <tr>
+        <td>זיכרון ROM</td>
+        <td>ROM</td>
+        <td>טכנולוגיה</td>
+        <td>זיכרון</td>
+    </tr>
+    <tr>
+        <td>מיקרו-מעבד</td>
+        <td>Microprocessor</td>
+        <td>טכנולוגיה</td>
+        <td>מיקר</td>
+    </tr>
+    <tr>
+        <td>מאיץ גרפי</td>
+        <td>GPU</td>
+        <td>טכנולוגיה</td>
+        <td>גרפי</td>
+    </tr>
+    <tr>
+        <td>מתג</td>
+        <td>Switch</td>
+        <td>טכנולוגיה</td>
+        <td>מתג</td>
+    </tr>
+    <tr>
+        <td>גיימינג</td>
+        <td>Gaming</td>
+        <td>טכנולוגיה</td>
+        <td>משחק</td>
+    </tr>
+    <tr>
+        <td>תחנת עבודה</td>
+        <td>Workstation</td>
+        <td>טכנולוגיה</td>
+        <td>תחנה</td>
+    </tr>
+    <tr>
+        <td>קוד QR</td>
+        <td>QR Code</td>
+        <td>טכנולוגיה</td>
+        <td>קוד</td>
+    </tr>
+    <tr>
+        <td>צ'אטבוט</td>
+        <td>Chatbot</td>
+        <td>טכנולוגיה</td>
+        <td>צ'אט</td>
+    </tr>
+    <tr>
+        <td>מערכת קול</td>
+        <td>Voice System</td>
+        <td>טכנולוגיה</td>
+        <td>קול</td>
+    </tr>
+    <tr>
+        <td>ראיית מחשב</td>
+        <td>Computer Vision</td>
+        <td>טכנולוגיה</td>
+        <td>ראי</td>
+    </tr>
+    <tr>
+        <td>ביג דאטה</td>
+        <td>Big Data</td>
+        <td>טכנולוגיה</td>
+        <td>דאטה</td>
+    </tr>
+    <tr>
+        <td>אינטרנט של הדברים</td>
+        <td>Internet of Things</td>
+        <td>טכנולוגיה</td>
+        <td>דברים</td>
+    </tr>
+    <tr>
+        <td>מנשק API</td>
+        <td>API Interface</td>
+        <td>טכנולוגיה</td>
+        <td>מנשק</td>
+    </tr>
+    <tr>
+        <td>יחידת עיבוד מרכזית</td>
+        <td>CPU</td>
+        <td>טכנולוגיה</td>
+        <td>עיבוד</td>
+    </tr>
+    <tr>
+        <td>פיתוח תוכנה</td>
+        <td>Software Development</td>
+        <td>טכנולוגיה</td>
+        <td>פיתוח</td>
+    </tr>
+    <tr>
+        <td>יחידת עיבוד גרפי</td>
+        <td>GPU</td>
+        <td>טכנולוגיה</td>
+        <td>גרפי</td>
+    </tr>
+    <tr>
+        <td>קישוריות בלוטות'</td>
+        <td>Bluetooth Connectivity</td>
+        <td>טכנולוגיה</td>
+        <td>בלוט</td>
+    </tr>
+    <tr>
+        <td>כונן SSD</td>
+        <td>SSD Drive</td>
+        <td>טכנולוגיה</td>
+        <td>כונן</td>
+    </tr>
+    <tr>
+        <td>אינטרנט מהיר</td>
+        <td>High-Speed Internet</td>
+        <td>טכנולוגיה</td>
+        <td>מהיר</td>
+    </tr>
+    <tr>
+        <td>מחשב נייד</td>
+        <td>Laptop</td>
+        <td>טכנולוגיה</td>
+        <td>נייד</td>
+    </tr>
+    <tr>
+        <td>טאבלט</td>
+        <td>Tablet</td>
+        <td>טכנולוגיה</td>
+        <td>טאבלט</td>
+    </tr>
+    <tr>
+        <td>פיתוח אפליקציות</td>
+        <td>App Development</td>
+        <td>טכנולוגיה</td>
+        <td>פיתוח</td>
+    </tr>
+    <tr>
+        <td>ביג דאטה</td>
+        <td>Big Data</td>
+        <td>טכנולוגיה</td>
+        <td>דאטה</td>
+    </tr>
+    <tr>
+        <td>ראיית מכונה</td>
+        <td>Machine Vision</td>
+        <td>טכנולוגיה</td>
+        <td>ראי</td>
+    </tr>
+    <tr>
+        <td>שירותי ענן</td>
+        <td>Cloud Services</td>
+        <td>טכנולוגיה</td>
+        <td>שירות</td>
+    </tr>
+    <tr>
+        <td>זיכרון פנימי</td>
+        <td>Internal Memory</td>
+        <td>טכנולוגיה</td>
+        <td>זיכרון</td>
+    </tr>
+    <tr>
+        <td>בינה עסקית</td>
+        <td>Business Intelligence</td>
+        <td>טכנולוגיה</td>
+        <td>עסק</td>
+    </tr>
+    <tr>
+        <td>סנסור</td>
+        <td>Sensor</td>
+        <td>טכנולוגיה</td>
+        <td>סנסור</td>
+    </tr>
+    <tr>
+        <td>פלטפורמה</td>
+        <td>Platform</td>
+        <td>טכנולוגיה</td>
+        <td>פלט</td>
+    </tr>
+    <tr>
+        <td>אנליטיקה</td>
+        <td>Analytics</td>
+        <td>טכנולוגיה</td>
+        <td>אנלי</td>
+    </tr>
+    <tr>
+        <td>שבב</td>
+        <td>Chip</td>
+        <td>טכנולוגיה</td>
+        <td>שבב</td>
+    </tr>
+    <tr>
+        <td>טכנולוגיית 5G</td>
+        <td>5G Technology</td>
+        <td>טכנולוגיה</td>
+        <td>5G</td>
+    </tr>
+    <tr>
+        <td>מערכת ניהול תוכן</td>
+        <td>Content Management System</td>
+        <td>טכנולוגיה</td>
+        <td>ניהול</td>
+    </tr>
+    <tr>
+        <td>אבטחה מקוונת</td>
+        <td>Online Security</td>
+        <td>טכנולוגיה</td>
+        <td>אבט</td>
+    </tr>
+    <tr>
+        <td>ספק כוח</td>
+        <td>Power Supply</td>
+        <td>טכנולוגיה</td>
+        <td>כוח</td>
+    </tr>
+    <tr>
+        <td>פיתוח אפליקציות מובייל</td>
+        <td>Mobile App Development</td>
+        <td>טכנולוגיה</td>
+        <td>פיתוח</td>
+    </tr>
+    <tr>
+        <td>אלקטרוניקה</td>
+        <td>Electronics</td>
+        <td>טכנולוגיה</td>
+        <td>אלק</td>
+    </tr>
+    <tr>
+        <td>ממשק משתמש</td>
+        <td>User Interface</td>
+        <td>טכנולוגיה</td>
+        <td>ממשק</td>
+    </tr>
+    <tr>
+        <td>קריסת מערכת</td>
+        <td>System Crash</td>
+        <td>טכנולוגיה</td>
+        <td>קריס</td>
+    </tr>
+    <tr>
+        <td>רשת מחשבים</td>
+        <td>Computer Network</td>
+        <td>טכנולוגיה</td>
+        <td>רשת</td>
+    </tr>
+    <tr>
+        <td>פיתוח משחקים</td>
+        <td>Game Development</td>
+        <td>טכנולוגיה</td>
+        <td>משחק</td>
+    </tr>
+    <tr>
+        <td>תחום הבינה המלאכותית</td>
+        <td>Field of AI</td>
+        <td>טכנולוגיה</td>
+        <td>בינה</td>
+    </tr>
+    <tr>
+        <td>אוטומציה</td>
+        <td>Automation</td>
+        <td>טכנולוגיה</td>
+        <td>אוטו</td>
+    </tr>
+    <tr>
+        <td>בינה מלאכותית</td>
+        <td>Artificial Intelligence</td>
+        <td>טכנולוגיה</td>
+        <td>בינ</td>
+    </tr>
+    <tr>
+        <td>מחשוב ענן</td>
+        <td>Cloud Computing</td>
+        <td>טכנולוגיה</td>
+        <td>מחשוב</td>
+    </tr>
+    <tr>
+        <td>כונן קשיח</td>
+        <td>Hard Drive</td>
+        <td>טכנולוגיה</td>
+        <td>כונן</td>
+    </tr>
+    <tr>
+        <td>ראיית מחשב</td>
+        <td>Computer Vision</td>
+        <td>טכנולוגיה</td>
+        <td>ראי</td>
+    </tr>
+    <tr>
+        <td>פיתוח תוכנה</td>
+        <td>Software Development</td>
+        <td>טכנולוגיה</td>
+        <td>פיתוח</td>
+    </tr>
+    <tr>
+        <td>ממשק API</td>
+        <td>API Interface</td>
+        <td>טכנולוגיה</td>
+        <td>מנשק</td>
+    </tr>
+    <tr>
+        <td>מתג רשת</td>
+        <td>Network Switch</td>
+        <td>טכנולוגיה</td>
+        <td>מתג</td>
+    </tr>
+    <tr>
+        <td>אופקדות</td>
+        <td>Optics</td>
+        <td>טכנולוגיה</td>
+        <td>אופק</td>
+    </tr>
+    <tr>
+        <td>תצוגת לד</td>
+        <td>LED Display</td>
+        <td>טכנולוגיה</td>
+        <td>לד</td>
+    </tr>
+    <tr>
+        <td>אביבורי מים</td>
+        <td>Water Cooling</td>
+        <td>טכנולוגיה</td>
+        <td>מים</td>
+    </tr>
+    <tr>
+        <td>מצלמת IP</td>
+        <td>IP Camera</td>
+        <td>טכנולוגיה</td>
+        <td>מצלמה</td>
+    </tr>
+    <tr>
+        <td>ביג דאטה</td>
+        <td>Big Data</td>
+        <td>טכנולוגיה</td>
+        <td>דאטה</td>
+    </tr>
+    <tr>
+        <td>אבטחת סייבר</td>
+        <td>Cybersecurity</td>
+        <td>טכנולוגיה</td>
+        <td>סייבר</td>
+    </tr>
+    <tr>
+        <td>תוכנת נגד וירוסים</td>
+        <td>Antivirus Software</td>
+        <td>טכנולוגיה</td>
+        <td>וירוס</td>
+    </tr>
+    <tr>
+        <td>מערכות מחשב</td>
+        <td>Computer Systems</td>
+        <td>טכנולוגיה</td>
+        <td>מערכת</td>
+    </tr>
+    <tr>
+        <td>עיבוד נתונים</td>
+        <td>Data Processing</td>
+        <td>טכנולוגיה</td>
+        <td>עיבוד</td>
+    </tr>
+    <tr>
+        <td>שבב אלקטרוני</td>
+        <td>Electronic Chip</td>
+        <td>טכנולוגיה</td>
+        <td>שבב</td>
+    </tr>
+    <tr>
+        <td>תחום הטכנולוגיה</td>
+        <td>Technology Field</td>
+        <td>טכנולוגיה</td>
+        <td>תחום</td>
+    </tr>
+    <tr>
+        <td>אחסון בענן</td>
+        <td>Cloud Storage</td>
+        <td>טכנולוגיה</td>
+        <td>אחסון</td>
+    </tr>
+    <tr>
+        <td>הנדסה לאחור</td>
+        <td>Reverse Engineering</td>
+        <td>טכנולוגיה</td>
+        <td>הנדסה</td>
+    </tr>
+    <tr>
+        <td>תקשורת מחשבים</td>
+        <td>Computer Communication</td>
+        <td>טכנולוגיה</td>
+        <td>תקשורת</td>
+    </tr>
+    <tr>
+        <td>חומרת מחשב</td>
+        <td>Computer Hardware</td>
+        <td>טכנולוגיה</td>
+        <td>חומר</td>
+    </tr>
+    <tr>
+        <td>שירותי IT</td>
+        <td>IT Services</td>
+        <td>טכנולוגיה</td>
+        <td>שירות</td>
+    </tr>
+    <tr>
+        <td>פיתוח טכנולוגי</td>
+        <td>Technological Development</td>
+        <td>טכנולוגיה</td>
+        <td>פיתוח</td>
+    </tr>
+    <tr>
+        <td>ירושלים</td>
+        <td>Jerusalem</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>תל אביב</td>
+        <td>Tel Aviv</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>חיפה</td>
+        <td>Haifa</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>אילת</td>
+        <td>Eilat</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>ים המלח</td>
+        <td>Dead Sea</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>הר הכרמל</td>
+        <td>Mount Carmel</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>כנרת</td>
+        <td>Sea of Galilee</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>מצדה</td>
+        <td>Masada</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>עכו</td>
+        <td>Acre</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>נצרת</td>
+        <td>Nazareth</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>בית לחם</td>
+        <td>Bethlehem</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>צפת</td>
+        <td>Safed</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>רמת הגולן</td>
+        <td>Golan Heights</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>גבעתיים</td>
+        <td>Giv'atayim</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>הר תבור</td>
+        <td>Mount Tabor</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>אשדוד</td>
+        <td>Ashdod</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>אשקלון</td>
+        <td>Ashkelon</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>נתניה</td>
+        <td>Netanya</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>פתח תקווה</td>
+        <td>Petah Tikva</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>רמת גן</td>
+        <td>Ramat Gan</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>רחובות</td>
+        <td>Rehovot</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>מודיעין</td>
+        <td>Modi'in</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>ראשון לציון</td>
+        <td>Rishon Lezion</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>הרצליה</td>
+        <td>Herzliya</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>בת ים</td>
+        <td>Bat Yam</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>קיסריה</td>
+        <td>Caesarea</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>הר החרמון</td>
+        <td>Mount Hermon</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>בית שאן</td>
+        <td>Beit She'an</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>אריאל</td>
+        <td>Ariel</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>כרמיאל</td>
+        <td>Karmiel</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>רמת השרון</td>
+        <td>Ramat HaSharon</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>שדרות</td>
+        <td>Sderot</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>מעלות תרשיחא</td>
+        <td>Ma'alot-Tarshiha</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>אופקים</td>
+        <td>Ofakim</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>לוד</td>
+        <td>Lod</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>אור יהודה</td>
+        <td>Or Yehuda</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>נמל תל אביב</td>
+        <td>Tel Aviv Port</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>פארק הירקון</td>
+        <td>Yarkon Park</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>מערות בית גוברין</td>
+        <td>Beit Guvrin Caves</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>שמורת עין גדי</td>
+        <td>Ein Gedi Reserve</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>יער בן שמן</td>
+        <td>Ben Shemen Forest</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>פארק אפק</td>
+        <td>Apolonia National Park</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>מצפה רמון</td>
+        <td>Mitzpe Ramon</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>עין הוד</td>
+        <td>Ein Hod</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>יער עציון</td>
+        <td>Etzion Forest</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>שמורת חי בר</td>
+        <td>Hai-Bar Nature Reserve</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>מכתש רמון</td>
+        <td>Ramon Crater</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>שמורת טבע החולה</td>
+        <td>Hula Nature Reserve</td>
+        <td>אתר</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>בית ג'וברין</td>
+        <td>Beit Jibrin</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>הר מירון</td>
+        <td>Mount Meron</td>
+        <td>מקום</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>חומוס</td>
+        <td>Hummus</td>
+        <td>אוכל</td>
+        <td>חמס</td>
+    </tr>
+    <tr>
+        <td>צ'יפס</td>
+        <td>Chips</td>
+        <td>אוכל</td>
+        <td>ציפ</td>
+    </tr>
+    <tr>
+        <td>פלאפל</td>
+        <td>Falafel</td>
+        <td>אוכל</td>
+        <td>פלפל</td>
+    </tr>
+    <tr>
+        <td>בורקס</td>
+        <td>Bourekas</td>
+        <td>אוכל</td>
+        <td>בורק</td>
+    </tr>
+    <tr>
+        <td>קיש</td>
+        <td>Quiche</td>
+        <td>אוכל</td>
+        <td>קיש</td>
+    </tr>
+    <tr>
+        <td>קציצות</td>
+        <td>Meatballs</td>
+        <td>אוכל</td>
+        <td>קצץ</td>
+    </tr>
+    <tr>
+        <td>שקשוקה</td>
+        <td>Shakshuka</td>
+        <td>אוכל</td>
+        <td>שוק</td>
+    </tr>
+    <tr>
+        <td>קבב</td>
+        <td>Kebab</td>
+        <td>אוכל</td>
+        <td>קבב</td>
+    </tr>
+    <tr>
+        <td>פיצה</td>
+        <td>Pizza</td>
+        <td>אוכל</td>
+        <td>פיצ</td>
+    </tr>
+    <tr>
+        <td>פסטה</td>
+        <td>Pasta</td>
+        <td>אוכל</td>
+        <td>פסט</td>
+    </tr>
+    <tr>
+        <td>סושי</td>
+        <td>Sushi</td>
+        <td>אוכל</td>
+        <td>סוש</td>
+    </tr>
+    <tr>
+        <td>שווארמה</td>
+        <td>Shawarma</td>
+        <td>אוכל</td>
+        <td>שוור</td>
+    </tr>
+    <tr>
+        <td>דג מלוח</td>
+        <td>Salted fish</td>
+        <td>אוכל</td>
+        <td>דג</td>
+    </tr>
+    <tr>
+        <td>פירות טריים</td>
+        <td>Fresh fruits</td>
+        <td>אוכל</td>
+        <td>פרות</td>
+    </tr>
+    <tr>
+        <td>רסק עגבניות</td>
+        <td>Tomato paste</td>
+        <td>אוכל</td>
+        <td>רסק</td>
+    </tr>
+    <tr>
+        <td>טחינה</td>
+        <td>Tahini</td>
+        <td>אוכל</td>
+        <td>טחין</td>
+    </tr>
+    <tr>
+        <td>פסטליה</td>
+        <td>Pastilla</td>
+        <td>אוכל</td>
+        <td>פסטל</td>
+    </tr>
+    <tr>
+        <td>מרק</td>
+        <td>Soup</td>
+        <td>אוכל</td>
+        <td>מרק</td>
+    </tr>
+    <tr>
+        <td>חמוצים</td>
+        <td>Pickles</td>
+        <td>אוכל</td>
+        <td>חמץ</td>
+    </tr>
+    <tr>
+        <td>לחמנייה</td>
+        <td>Bun</td>
+        <td>אוכל</td>
+        <td>לחמ</td>
+    </tr>
+    <tr>
+        <td>מאפין</td>
+        <td>Muffin</td>
+        <td>אוכל</td>
+        <td>מאפ</td>
+    </tr>
+    <tr>
+        <td>קפה שחור</td>
+        <td>Black coffee</td>
+        <td>אוכל</td>
+        <td>קפה</td>
+    </tr>
+    <tr>
+        <td>מים מינרליים</td>
+        <td>Mineral water</td>
+        <td>אוכל</td>
+        <td>מים</td>
+    </tr>
+    <tr>
+        <td>מיץ תפוזים</td>
+        <td>Orange juice</td>
+        <td>אוכל</td>
+        <td>מיץ</td>
+    </tr>
+    <tr>
+        <td>תפוח עץ</td>
+        <td>Apple</td>
+        <td>אוכל</td>
+        <td>תפוח</td>
+    </tr>
+    <tr>
+        <td>פודינג</td>
+        <td>Pudding</td>
+        <td>אוכל</td>
+        <td>פוד</td>
+    </tr>
+        <!-- הוספת שורות נוספות עד 1000 מילים -->
+        <!-- ... -->
+    </tbody>
+</table>
+
+<script>
+    function filterTable() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const table = document.getElementById('dictionaryTable');
+        const tr = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < tr.length; i++) {
+            const tdHebrew = tr[i].getElementsByTagName('td')[0];
+            const tdEnglish = tr[i].getElementsByTagName('td')[1];
+            if (tdHebrew || tdEnglish) {
+                const textHebrew = tdHebrew.textContent || tdHebrew.innerText;
+                const textEnglish = tdEnglish.textContent || tdEnglish.innerText;
+                if (textHebrew.toLowerCase().indexOf(filter) > -1 || textEnglish.toLowerCase().indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }       
+        }
+    }
+
+    function sortTable() {
+        const table = document.getElementById('dictionaryTable');
+        const tbody = table.tBodies[0];
+        const rows = Array.from(tbody.rows);
+        const sortOption = document.getElementById('sortSelect').value;
+
+        rows.sort((a, b) => {
+            let aText, bText;
+            if (sortOption === 'category') {
+                aText = a.cells[2].textContent;
+                bText = b.cells[2].textContent;
+            } else if (sortOption === 'abc') {
+                aText = a.cells[1].textContent; // מיון לפי מילה באנגלית
+                bText = b.cells[1].textContent;
+            } else if (sortOption === 'root') {
+                aText = a.cells[3].textContent; // מיון לפי שורש
+                bText = b.cells[3].textContent;
+            } else {
+                aText = a.cells[0].textContent; // מיון לפי מילה בעברית
+                bText = b.cells[0].textContent;
+            }
+            return aText.localeCompare(bText);
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+    }
+</script>
+
+</body>
+</html>
