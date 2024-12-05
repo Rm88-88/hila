@@ -1,25 +1,23 @@
 import chess
 import chess.svg
-import random
-from IPython.display import display, SVG
+from flask import Flask, render_template_string
 
-def play_game():
+app = Flask(__name__)
+
+@app.route('/')
+def index():
     board = chess.Board()
-    while not board.is_game_over():
-        display(SVG(chess.svg.board(board=board)))
-        if board.turn == chess.WHITE:
-            move = input("Enter your move: ")
-            try:
-                board.push_san(move)
-            except ValueError:
-                print("Invalid move. Try again.")
-        else:
-            move = random.choice(list(board.legal_moves))
-            board.push(move)
-            print(f"Computer move: {board.san(move)}")
-    display(SVG(chess.svg.board(board=board)))
-    print("Game over!")
-    print(board.result())
+    board_svg = chess.svg.board(board)
+    return render_template_string('''<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Game</title>
+</head>
+<body>
+    <h1>Chess Game</h1>
+    <div>{{ board|safe }}</div>
+</body>
+</html>''', board=board_svg)
 
-if __name__ == "__main__":
-    play_game()
+if __name__ == '__main__':
+    app.run(debug=True)
