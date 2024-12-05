@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק שחמט תלת מימדי</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stockfish@latest/stockfish.js"></script>
+</head>
+<body>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const boardSize = 8;
+        const squareSize = 1;
+        const boardGeometry = new THREE.BoxGeometry(squareSize, 0.1, squareSize);
+        const colors = [0xffffff, 0x000000];
+        const chess = new Chess();
+        let selectedPiece = null;
+        let pieceMesh = null;
+        let stockfish = new Worker('https://cdn.jsdelivr.net/npm/stockfish@latest/stockfish.js');
+
+        // יצירת לוח שחמט
+        function createBoard() {
+            for (let i = 0; i < boardSize; i++) {
+                for (let j = 0; j < boardSize; j++) {
+                    const material = new THREE.MeshBasicMaterial({ color: colors[(i + j) % 2] });
+                    const square = new THREE.Mesh(boardGeometry, material);
+                    square.position.set(i - boardSize / 2 + 0.5, -0.05, j - boardSize / 2 + 0.5);
+                    square.userData = { x: i, z: j };
+                    scene.add(square);
+                }
+            }
+        }
+
+        // יצירת חלקים
+        function createPiece(type, color, x, z) {
+            const geometry = new THREE.CylinderGeometry(0.3, 0.3, 0.6, 32);
+            const material = new THREE.MeshBasicMaterial({ color: color === 'white' ? 0xffffff : 0x000000 });
+            const piece = new THREE.Mesh(geometry, material);
+            piece.position.set(x, 0.3, z);
+            piece.userData = { type, color };
+            scene.add(piece);
+            return piece;
+        }
+
+        // הוספת החלקים ההתחלתיים
+        function setupPieces() {
+            const initialSetup = {
+                'r': 'black', 'n': 'black', 'b': 'black', 'q': 'black', 'k': 'black', 'p': 'black',
+                'R': 'white', 'N': 'white', 'B': 'white', 'Q': 'white', 'K': 'white', 'P': 'white'
+            };
+            for (let i = 0; i < boardSize; i++) {
+                createPiece('p', 'black', i - boardSize / 2 + 0.5, -boardSize / 2 + 0.5);
+                createPiece('p', 'white', i - boardSize / 2 + 0.5, boardSize / 2 - 0.5);
+            }
+            createPiece('r', 'black', -3.5, -3.5);
+            createPiece('r', 'black', 3.5, -3.5);
+            createPiece('r', 'white', -3.5, 3.5);
+            createPiece('r', 'white', 3.5, 3.5);
+            // הוסף שאר החלקים...
+        }
+
+        createBoard();
+        setupPieces();
+        camera.position.z = 5;
+
+        // פונקציה להזזת חלקים
+        function onMouseClick(event) {
+            const mouse = new THREE.Vector2();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            const raycaster = new THREE.Raycaster();
+            raycaster.setFromCamera(mouse, camera);
+
+            const intersects = raycaster.intersectObjects(scene.children);
+            if (intersects.length > 0) {
+                const object = intersects[0].object;
+                if (object.userData.type) {
+                    if (selectedPiece) {
+                        const move = chess.move({
+                            from: selectedPiece.userData.square,
+                            to: object.userData.square,
+                            promotion: 'q' // או כל קידום אחר שתרצה
+                        });
+                        if (move) {
+                            movePiece(selectedPiece, object.position.x, object.position.z);
+                            selectedPiece = null;
+                            // שלח למנוע AI לחשוב
+                            stockfish.postMessage('position fen ' + chess.fen());
+                            stockfish.postMessage('go movetime 1000'); // זמן לחשוב
+                        }
+                    } else {
+                        selectedPiece = object;
+                        selectedPiece.position.y += 0.5; // חיבור למעלה
+                    }
+                }
+            }
+        }
+
+        // פונקציה להזזת חלק
+        function movePiece(piece, newX, newZ) {
+            piece.position.set(newX, 0.3, newZ);
+            piece.userData.square = `${newX},${newZ}`; // עדכון מיקום החלק
+        }
+
+        // אירוע לחיצה
+        window.addEventListener('click', onMouseClick, false);
+
+        // קבלת תנועה ממנוע ה-AI
+        stockfish.onmessage = function(event) {
+            const message = event.data;
+            if (message.includes("bestmove")) {
+                const bestMove = message.split(" ")[1];
+                chess.move(bestMove);
+                // עדכון תצוגה
+                // כאן תוסיף קוד לעדכון תצוגת החלקים בהתאם למהלך
+            }
+        };
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
